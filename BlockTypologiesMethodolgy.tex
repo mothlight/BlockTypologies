@@ -73,7 +73,7 @@
 \begin{document}
 
 
-\include{TargetHtc_glossary} 
+%\include{TargetHtc_glossary} 
 
 
 \begin{frontmatter}
@@ -109,6 +109,7 @@
 \author[melb]{Gideon D.P.A. Aschwanden}
 \author[melb,sun]{Jason Thompson}
 \author[melb]{Jasper S. Wijnands}
+\author[melb]{Michele Acuto}
 \author[melb]{Haifeng Zhao}
 \author[melb,pop]{Mark Stevenson}
 \author[melb]{Jingcheng Wang}
@@ -123,7 +124,10 @@
 
 \begin{abstract}
 
-\textbf{TODO, This is the abstract with some details.}
+As cities grow and evolve, the road networks and urban block structure provides clues as to the process and governance under which this growth occurred. We propose a new quantitative method to discover inner-city typologies of street patterns and city block size and regularity. This follows \cite{Louf2014a}'s finding that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
+
+Our method samples custom stylised maps from Google Maps of the world's largest 1692 cities. Using a floodfill, the size and regularity of the city blocks in each of these samples are calculated and histograms constructed for each map. A self organising map (SOM) is used to cluster these images into city block typologies. 
+
 
 \end{abstract}
 
@@ -147,6 +151,11 @@ urban typologies, self organizing map, city clustering
 
 
 \section{Introduction}\label{sec:introduction}
+
+
+
+
+
 
 \section{Methods}\label{sec:Methods}
 
@@ -211,22 +220,6 @@ Block size and regularity were calculated for each sampled image with the follow
  \caption{Calculation of block sizes and regularity}
 \end{algorithm}
 
-%\begin{algorithm}[H]
-%\SetAlgoLined
-%\KwResult{List of region sizes and region regularity for an image }
-% Start at top left point of image\;
-% \While{While Locate the first white pixel iterating across rows and columns}{
-%   floodfill the area using boundaries of all non-white colors (i.e. black roads, green space, blue water)\;
-%  }
-% }
-% \caption{How to write algorithms}
-%\end{algorithm}
-
-%Start at top left point of image, locate the first white pixel iterating across rows and columns. Once a white pixel is located, floodfill the area using boundaries of all non-white colors (i.e. black roads, green space, blue water). Record the region size in a Sqlite3 database. 
-
-%Also, for this area, find four rectangular vertices, finding x1 with the lowest x value, y2 with the lowest y value, x2 with the highest x value, and y2 with the highest y value. Using the four vertices (point\_x\_min,point\_y\_min), (point\_y\_min, point\_x\_max), (point\_x\_max,point\_y\_max), (point\_y\_max,point\_x\_min), count the number of pixels outside of the rectangle and save that value in the Sqlite3 database. 
-
-%Repeat all steps until all white regions in the image have been completed.
 
 Sample results are shown in Figure \ref{fig:floodfilled}.
 
@@ -265,53 +258,71 @@ Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsand
 \subsection{Clustering city regions}\label{methodscluster}
 1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  TODO, some detail about the SOM.
 
-But this set of results just uses 95 cities from the United States.
+But this set of results just uses 135 cities from the United States.
 
-The maps are organized into 10 clusters. (TODO, how many clusters are best and why?). 
+The maps are organized into 10 clusters, but only 7 clusters were found. (TODO, how many clusters are best and why?). 
 
 
 \section{Results}\label{results}
 \subsection{Clusters}\label{resultsclusters}
 
-The resulting 10 clusters from the 95 United States cities are shown in Figure \ref{fig:clustermapsimages}. A map of the US, showing the dominant and secondary cluster represented in each city is presented in Figure \ref{fig:clustermaplocations}. Inner city cluster locations in Denver, Colorado are presented in Figure \ref{fig:clustermapdenverlocations}.
-
+The resulting 7 clusters from the 135 United States cities are shown in Figure \ref{fig:clustermapsimages}. A map of the US, showing the dominant and secondary cluster represented in each city is presented in Figure \ref{fig:clustermaplocations}. Inner city cluster locations in Denver, Colorado are presented in Figure \ref{fig:clustermapdenverlocations}.
 
 
 
 \begin{figure}[!htbp]
-    \centering    
-a) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster0.png}  
-b) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster1.png} 
-c) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster2.png} 
+\centering    
+a) \includegraphics[scale=0.04,page=1]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+b) \includegraphics[scale=0.04,page=2]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+c) \includegraphics[scale=0.04,page=3]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
 \\
-d) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster3.png}  
-e) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster4.png} 
-f) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster5.png} 
+d) \includegraphics[scale=0.04,page=4]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+e) \includegraphics[scale=0.04,page=5]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+f) \includegraphics[scale=0.04,page=6]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
 \\
-g) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster6.png}  
-h) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster7.png} 
-i) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster8.png} 
-\\
-j) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster9.png}  
-
-\caption{\bf Clusters a) 0, b) 1, c) 2, etc. of individual maps from 95 United States cities, showing only the top 60 map images closest to the centre of the clusters.}    
+g) \includegraphics[scale=0.04,page=7]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+%h) \includegraphics[scale=0.04,page=8]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+%i) \includegraphics[scale=0.04,page=9]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+%\\
+%j) \includegraphics[scale=0.04,page=10]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
+\caption{\bf Clusters a) 0, b) 1, c) 2, etc. of individual maps from 135 United States cities, showing only the top 60 map images closest to the centre of the clusters.}    
  \label{fig:clustermapsimages}  
 \end{figure} 
 
+%\begin{figure}[!htbp]
+%    \centering    
+%a) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster0.png}  
+%b) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster1.png} 
+%c) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster2.png} 
+%\\
+%d) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster3.png}  
+%e) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster4.png} 
+%f) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster5.png} 
+%\\
+%g) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster6.png}  
+%h) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster7.png} 
+%i) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster8.png} 
+%\\
+%j) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster9.png}  
+%
+%\caption{\bf Clusters a) 0, b) 1, c) 2, etc. of individual maps from 95 United States cities, showing only the top 60 map images closest to the centre of the clusters.}    
+% \label{fig:clustermapsimages}  
+%\end{figure} 
+
 
 
 
 \begin{figure}[!htbp]
     \centering    
- \includegraphics[scale=0.30]{Images/CityClusters6.png}  
-\caption{\bf Locations of clusters for 95 United States cities. Outer marker colour shows the cluster that the largest number of locations in the city belong. Inner marker colour shows the 2nd largest locations. }    
+ \includegraphics[scale=0.30]{Images/CityClusters15VarBinsSize135USCitiesImages10clusters.png}  
+\caption{\bf Locations of clusters for 135 United States cities. Outer marker colour shows the cluster that the largest number of locations in the city belong. Inner marker colour shows the 2nd largest locations. }    
  \label{fig:clustermaplocations}  
 \end{figure} 
 
 \begin{figure}[!htbp]
     \centering    
- \includegraphics[scale=0.50]{Images/InnerCityClustersDenver-Crop.png}  
-\caption{\bf Locations of clusters for 95 United States cities. Detail of inner city locations for Denver, Colorado. }    
+ \includegraphics[scale=0.50]{Images/InnerCityClustersNYC-crop.png}  
+\caption{\bf Locations of clusters for 135 United States cities. Detail of inner city locations for New York, New York. }    
  \label{fig:clustermapdenverlocations}  
 \end{figure} 
 

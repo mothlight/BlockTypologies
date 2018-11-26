@@ -20,6 +20,12 @@ cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/Montag
 cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/MontageHistogramBothCluster7.png Images
 cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/MontageHistogramBothCluster8.png Images
 cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/MontageHistogramBothCluster9.png Images
+cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/output_15VarBins_Size_135USCitiesImages_10clusters.pdf Images/output15VarBinsSize135USCitiesImages10clusters.pdf
+cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/CityClusters_15VarBins_Size_135USCitiesImages_10clusters.png Images/CityClusters15VarBinsSize135USCitiesImages10clusters.png
+
+
+
+
 
 bibtex BlockTypologiesMethodolgy.aux
 makeglossaries  BlockTypologiesMethodolgy
