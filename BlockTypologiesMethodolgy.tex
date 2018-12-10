@@ -106,7 +106,7 @@
 
 \author[melb]{Kerry~A.~Nice\corref{cor1}}
 \ead{kerry.nice@unimelb.edu.au}
-\author[melb]{Gideon D.P.A. Aschwanden}
+\author[melb]{Gideon D.P.A. Aschwanden\corref{cor1}}
 \ead{gideon.aschwanden@unimelb.edu.au}
 \author[melb,sun]{Jason Thompson}
 \author[melb]{Jasper S. Wijnands}
@@ -194,7 +194,9 @@ These procedures result in a population and water body-adjusted circular area ce
 
 
 \subsection{Imagery sources}\label{methodsimagery}
-Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a zoom level of 16 (approximately 800x800m at the equator reducing to 450x450m at higher latitudes). These were obtained from the selected locations using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The images provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 training images were used per city, for a total data set of 1,665,000 images. 
+Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a zoom level of 16 (approximately 800x800m at the equator to 450x450m at higher latitudes). These were obtained from the selected locations using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The images provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 training images were used per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas. This results in an additional 23,027 locations for Melbourne and 24,596 for Sydney. As a result, the total dataset consists of 1,714,591 images.
+
+
 
 \begin{figure}[!htbp]
     \centering    
@@ -277,88 +279,23 @@ Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsand
 \subsection{Clustering city regions}\label{methodscluster}
 ~1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  
 The SOM methodology \citep{Kohonen1982} is a data driven methodology that transforms a n dimensional data source into a lower dimensional space, mostly 2 dimensions why it is called a map, while keeping the typology of the high dimensional space intact. This transformation keeps the relative n-dimensional proximity of two datapoints intact when projecting them in the lower space. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2 dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
-The argument for the choice of this methodology lies in its ability to create two dimensional maps of smoothly changing patterns from the original high dimensional space. Additonally the SOM map spans the extremes observed in the orginial data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
+The argument for the choice of this methodology lies in its ability to create two dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
 To conclude, SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}.
 
-But this set of results just uses 135 cities from the United States.
+
 
 The maps are organized into 10 clusters, but only 7 clusters were found. (TODO, how many clusters are best and why?). 
 
 
 \section{Results}\label{results}
-\subsection{Clusters}\label{resultsclusters}
-
-The resulting 7 clusters from the 135 United States cities are shown in Figure \ref{fig:clustermapsimages}. A map of the US, showing the dominant and secondary cluster represented in each city is presented in Figure \ref{fig:clustermaplocations}. Inner city cluster locations in Denver, Colorado are presented in Figure \ref{fig:clustermapdenverlocations}.
-
-
+The SOM was trained with 3.2 million iterations of the 1.7 million images before k-means clustering and cluster classification was applied. The underlying imagery of the resulting trained SOM was visualised by tiling representative images from each neuron x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated images with that particular neuron x,y location.
 
 \begin{figure}[!htbp]
 \centering    
-%a) \includegraphics[scale=0.04,page=1]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%b) \includegraphics[scale=0.04,page=2]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%c) \includegraphics[scale=0.04,page=3]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%\\
-%d) \includegraphics[scale=0.04,page=4]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%e) \includegraphics[scale=0.04,page=5]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%f) \includegraphics[scale=0.04,page=6]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%\\
-%g) \includegraphics[scale=0.04,page=7]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%h) \includegraphics[scale=0.04,page=8]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%i) \includegraphics[scale=0.04,page=9]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-%\\
-%j) \includegraphics[scale=0.04,page=10]{Images/output15VarBinsSize135USCitiesImages10clusters.pdf}  
-\caption{\bf Clusters a) 0, b) 1, c) 2, etc. of individual maps from 135 United States cities, showing only the top 60 map images closest to the centre of the clusters.}    
- \label{fig:clustermapsimages}  
+\includegraphics[scale=0.10]{Images/SomImages.png}  
+\caption{\bf A visualisation of the 2 dimensional SOM trained with 1.7 million map images. Each x,y point shows a representative image associated with each neuron. Neurons without associated images are shown in black. }    
+ \label{fig:somresults}  
 \end{figure} 
-
-%\begin{figure}[!htbp]
-%    \centering    
-%a) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster0.png}  
-%b) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster1.png} 
-%c) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster2.png} 
-%\\
-%d) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster3.png}  
-%e) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster4.png} 
-%f) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster5.png} 
-%\\
-%g) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster6.png}  
-%h) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster7.png} 
-%i) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster8.png} 
-%\\
-%j) \includegraphics[scale=0.04]{Images/MontageHistogramBothCluster9.png}  
-%
-%\caption{\bf Clusters a) 0, b) 1, c) 2, etc. of individual maps from 95 United States cities, showing only the top 60 map images closest to the centre of the clusters.}    
-% \label{fig:clustermapsimages}  
-%\end{figure} 
-
-
-
-
-%\begin{figure}[!htbp]
-%    \centering    
-% \includegraphics[scale=0.30]{Images/CityClusters15VarBinsSize135USCitiesImages10clusters.png}  
-%\caption{\bf Locations of clusters for 135 United States cities. Outer marker colour shows the cluster that the largest number of locations in the city belong. Inner marker colour shows the 2nd largest locations. }    
-% \label{fig:clustermaplocations}  
-%\end{figure} 
-%
-%\begin{figure}[!htbp]
-%    \centering    
-% \includegraphics[scale=0.50]{Images/InnerCityClustersNYC-crop.png}  
-%\caption{\bf Locations of clusters for 135 United States cities. Detail of inner city locations for New York, New York. }    
-% \label{fig:clustermapdenverlocations}  
-%\end{figure} 
-
-Clustering was also performed generating a combined (size and regularity) histogram per city (from the 1000 sampled images) and clustering these histograms in a SOM. Three (of ten) clusters are shown in Figure \ref{fig:cityclustering}.
-
-
-%\begin{figure}[!htbp]
-%    \centering    
-%a) \includegraphics[scale=0.05,page=1,trim = 0mm 1815mm 0mm 0mm,clip]{Images/cityClusteringOutput.pdf}  \\
-% b) \includegraphics[scale=0.05,page=2,trim = 0mm 1815mm 0mm 0mm,clip]{Images/cityClusteringOutput.pdf}  \\
-% c)  \includegraphics[scale=0.05,page=3,trim = 0mm 1815mm 0mm 0mm,clip]{Images/cityClusteringOutput.pdf}  
-%\caption{\bf Three sample clusters clustering by city-based histograms. }    
-% \label{fig:cityclustering}  
-%\end{figure} 
 
 
 \section{Code availability and licensing}\label{sec:available}
