@@ -106,7 +106,7 @@
 
 \author[melb]{Kerry~A.~Nice\corref{cor1}}
 \ead{kerry.nice@unimelb.edu.au}
-\author[melb]{Gideon D.P.A. Aschwanden}
+\author[melb]{Gideon D.P.A. Aschwanden\corref{cor1}}
 \ead{gideon.aschwanden@unimelb.edu.au}
 \author[melb,sun]{Jason Thompson}
 \author[melb]{Jasper S. Wijnands}
@@ -184,7 +184,9 @@ These procedures result in a population and water body-adjusted circular area ce
 
 
 \subsection{Imagery sources}\label{methodsimagery}
-Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a zoom level of 16 (approximately 800x800m at the equator reducing to 450x450m at higher latitudes). These were obtained from the selected locations using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The images provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 training images were used per city, for a total data set of 1,665,000 images. 
+Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a zoom level of 16 (approximately 800x800m at the equator to 450x450m at higher latitudes). These were obtained from the selected locations using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The images provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 training images were used per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas. This results in an additional 23,027 locations for Melbourne and 24,596 for Sydney. As a result, the total dataset consists of 1,714,591 images.
+
+
 
 \begin{figure}[!htbp]
     \centering    
