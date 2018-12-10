@@ -272,6 +272,14 @@ The maps are organized into 10 clusters, but only 7 clusters were found. (TODO, 
 
 
 \section{Results}\label{results}
+The SOM was trained with 3.2 million iterations of the 1.7 million images before k-means clustering and cluster classification was applied. The underlying imagery of the resulting trained SOM was visualised by tiling representative images from each neuron x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated images with that particular neuron x,y location.
+
+\begin{figure}[!htbp]
+\centering    
+\includegraphics[scale=0.10]{Images/SomImages.png}  
+\caption{\bf A visualisation of the 2 dimensional SOM trained with 1.7 million map images. Each x,y point shows a representative image associated with each neuron. Neurons without associated images are shown in black. }    
+ \label{fig:somresults}  
+\end{figure} 
 
 
 \section{Code availability and licensing}\label{sec:available}
