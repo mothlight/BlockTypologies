@@ -265,6 +265,18 @@ The argument for the choice of this methodology lies in its ability to create tw
 To conclude, SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}.
 %%In this case the size and regularity dimensions (16+16) into a lower 2 dimenional data space
 
+The SOM was constructed with a width and height of 100 and run with 3.2 million iterations of training. The radius decay was calculated as
+
+
+\begin{equation} 
+radiusDecay = radius * e^{-1 * iteration / timeConstant}
+\end{equation}
+where radius is $100/2$, iteration is the current iteration, and timeConstant is $totalIterations / \log _{10} (radius)$ and learn decay is calculated as
+\begin{equation} 
+learnDecay = learnRate * e^{-1 * iteration / timeConstant}
+\end{equation}
+where learnRate = 0.05.
+
 
 
 
