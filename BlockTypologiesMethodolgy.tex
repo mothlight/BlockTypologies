@@ -125,9 +125,9 @@ The method is robust in detecting similarities between cities but between neighb
 
 \begin{abstract}
 
-As cities grow and evolve, the road networks and urban block structure provides clues as to the process and governance under which this growth occurred. We propose a novel quantitative and objective method to discover city typologies on the neighborhood scale of street patterns, city block size and regularity. This follows \cite{Louf2014a}'s finding that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
+As cities grow and evolve, the road networks and urban block structure provides clues as to the process and governance under which this growth occurred. We propose a novel quantitative and objective method to discover city typologies on the neighborhood scale of street patterns, city block size and regularity. This follows \cite{Louf2014a}'s finding that a systematic quantitative method to identify different neighborhoods is currently lacking. 
 
-Our method 800m x 800m samples of custom abstract / stylised maps from Google Maps of the world's largest 1692 cities. Using a floodfill, the size and regularity of each city blocks in a samples is calculated and histograms constructed for each map sample. A self organising map (SOM), that deploys a unsupervised learning algorithm is used, for feature detection and to cluster (arrange) these images into city block typologies. 
+Our method 800m x 800m samples of custom abstract / stylized maps from Google Maps of the world's largest 1692 cities. Using a floodfill, the size and regularity of each city blocks in a samples is calculated and histograms constructed for each map sample. A self organising map (SOM), that deploys an unsupervised learning algorithm is used, for feature detection and to cluster (arrange) these images into city block typologies. 
 
 
 \end{abstract}
@@ -257,7 +257,12 @@ Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsand
 \end{figure} 
 
 \subsection{Clustering city regions}\label{methodscluster}
-1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  TODO, some detail about the SOM.
+~1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  
+The SOM methodology \citep{Kohonen1982} is a data driven methodology that transforms a n dimensional data source into a lower dimensional space, mostly 2 dimensions why it is called a map, while keeping the typology of the high dimensional space intact. This transformation keeps the relative n-dimensional proximity of two datapoints intact when projecting them in the lower space. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2 dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
+The argument for the choice of this methodology lies in its ability to create two dimensional maps of smoothly changing patterns from the original high dimensional space. Additonally the SOM map spans the extremes observed in the orginial data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
+To conclude, SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}.
+%%In this case the size and regularity dimensions (16+16) into a lower 2 dimenional data space
+
 
 But this set of results just uses 135 cities from the United States.
 
@@ -400,8 +405,9 @@ While at the University of Melbourne, Kerry Nice was funded by the Transport, He
 %\end{acknowledgements}
 
 
-
-
+% Kohonen, T.: Self-organized formation of topologically correct fea- ture maps, Biol. Cybern., 43, 59–69, 1982.
+% Barreto2016: https://www.researchgate.net/publication/6975779_Adaptive_filtering_with_the_self-organizing_map_A_performance_comparison?el=1_x_8&enrichId=rgreq-e6c98f6b-a760-499e-9f13-23ad0728c94f&enrichSource=Y292ZXJQYWdlOzI4MTQ1NjU2MDtBUzoyNjk4MDIzMTI4MjY4ODBAMTQ0MTMzNzI5MjM0Mw==
+%Kolehmainen2004: https://www.researchgate.net/publication/27515989_Data_Exploration_with_Self-Organizing_Maps_in_Environmental_Informatics_and_Bioinformatics
 
 
 \end{document}
