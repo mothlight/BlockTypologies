@@ -153,8 +153,18 @@ urban typologies, self organizing map, unsupervised learning algorithm, urban de
 
 \section{Introduction}\label{sec:introduction}
 
+%% Why is understanding the city so important
+%% - Health (Lancet)
+%% - Transport (Space Syntax)
+%% - Economics (Urban Economics)
 
+\subsection{City Typologies}\label{sec:introduction2}
+Cities are the most complex entities humans have ever created, but they are examples of 'organised complexity' that allow us to discerne some kind of order within the diversity and complexity cities present \citep{Kropf2014}. Approaches that aim to classify the built form are using a hirarchitcal dichotomy based on the scale of urban element. Different scales of dichotomies exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities  \citep{Lynch1981} \citep{Conzen1960} \citep{Caniggi1979} \citep{Castex1980} \citep{Mouden1988} \citep{Allain2004}.
 
+(insert figure with different scales todo GA xxx)
+
+The used elements by the existing approaches are not coherant, some are using going to the level of rooms, others are expanding on the larger scale. One of the few consistant elements used by all existing approaches is the "Street Block", "Block", "Urban Tissue" or "insula", the area that is confined by the surrounding streets may it be build up, open space or a combination of both.
+The evaluation and classification based on the individual dichotomy is 
 
 
 
@@ -258,13 +268,19 @@ Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsand
  \label{fig:mapsandHist}  
 \end{figure} 
 
+\subsection{Similar city regions}\label{methodssimilarity}
+
+\begin{figure}[!htbp]
+\centering  
+\caption{\bf Map of Melbourne overlayed with a grid of 23000 satelite images colourised according based on their location with in the SOM and {insert what colour schema is used}    
+ \label{fig:clustermapsimages}  
+\end{figure} 
+
 \subsection{Clustering city regions}\label{methodscluster}
 ~1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  
 The SOM methodology \citep{Kohonen1982} is a data driven methodology that transforms a n dimensional data source into a lower dimensional space, mostly 2 dimensions why it is called a map, while keeping the typology of the high dimensional space intact. This transformation keeps the relative n-dimensional proximity of two datapoints intact when projecting them in the lower space. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2 dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
 The argument for the choice of this methodology lies in its ability to create two dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
 To conclude, SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}.
-%%In this case the size and regularity dimensions (16+16) into a lower 2 dimenional data space
-
 The SOM was constructed with a width and height of 100 and run with 3.2 million iterations of training. The radius decay was calculated as
 
 
@@ -354,11 +370,16 @@ While at the University of Melbourne, Kerry Nice was funded by the Transport, He
 %\end{acknowledgements}
 
 
-% Kohonen, T.: Self-organized formation of topologically correct fea- ture maps, Biol. Cybern., 43, 59–69, 1982.
+% Kohonen, T.: Self-organized formation of topologically correct feature maps, Biol. Cybern., 43, 59–69, 1982.
 % Barreto2016: https://www.researchgate.net/publication/6975779_Adaptive_filtering_with_the_self-organizing_map_A_performance_comparison?el=1_x_8&enrichId=rgreq-e6c98f6b-a760-499e-9f13-23ad0728c94f&enrichSource=Y292ZXJQYWdlOzI4MTQ1NjU2MDtBUzoyNjk4MDIzMTI4MjY4ODBAMTQ0MTMzNzI5MjM0Mw==
 %Kolehmainen2004: https://www.researchgate.net/publication/27515989_Data_Exploration_with_Self-Organizing_Maps_in_Environmental_Informatics_and_Bioinformatics
-
-
+%Kropf2014 https://www.researchgate.net/profile/Karl_Kropf/publication/289726246_Ambiguity_in_the_definition_of_built_form/links/570d5f4a08ae2b772e4320a1.pdf
+%Lynch1981 Lynch, K. (1981) Good city form (MIT Press,Cambridge, MA).
+%Conzen1960 Conzen, M. R. G. (1960) Alnwick, Northumberland:a study in town-plan analysis Institute of British Geographers Publication 27 (George Philip, London).
+%Caniggi1979 Caniggia, G. and Maffei, G. L. (1979) Composizione architettonica e tipologia edilizia 1: lettura dell'edilizia di base (Marsilio, Venice ).
+% Castex1980 Castex, J., Depaule, J-C. and Panerai, P. (1980) Formes urbaines: De l'îlot à la barre (Dunod,Paris).
+%Mouden1988 Moudon, A.V. (1988) Built for change (MIT Press,Cambridge, MA)
+%Allain2004 Allain, R. (2004) Morphologie urbaine (Armand Colin, Paris).
 \end{document}
 
 \endinput
