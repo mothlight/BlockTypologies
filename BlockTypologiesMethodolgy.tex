@@ -270,11 +270,11 @@ The resulting histograms for sample map regions are shown in Figure \ref{fig:map
 
 
 \subsection{Organising maps in the self organising map}\label{methodscluster}
-The self organizing map (SOM) methodology \citep{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
+The self organizing map (SOM) methodology \citep{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
 
 SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
 
-The 1.7 million maps histograms with 32 dimension were the initial data space used to train the 2 dimensional SOM (written in Java 8 \citep{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM a random selection of 3.2 million datapoints from the initial data space were used to transform the 2 dimensional SOM to match it. This iterative process located nodes that are similar to the training vector and morphes the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude (learningDecay) and  distance (radiusDecay) in the SOM the impact reaches.
+The 1.7 million maps histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM (written in Java 8 \citep{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million datapoints from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locats nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM calculated with
 
 
 \begin{equation} 
@@ -286,11 +286,8 @@ learnDecay = learnRate * e^{-1 * iteration / timeConstant}
 \end{equation}
 where $learnRate = 0.05$.
 
-The SOM domain was constructed with a width and height of 100x100 and run with 3.2 million iterations of training, using the 1.7 million images, before k-means clustering and cluster classification was applied. 
-% Don't know if we should keep the clustering in the publication.
-
-After the SOM was trained each map segment was classified to find the closest matchin the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics %(ref{fig:SOM_density.)
-. Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white.
+After the SOM was trained, each map histogram was classified to find the closest matching neuron in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
+Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
 
 \begin{figure}[!htbp]
 \centering    
@@ -303,7 +300,16 @@ After the SOM was trained each map segment was classified to find the closest ma
 
 The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D  \citep{Jackle2017}, based on \cite{Steiger2015}. These colours were used in plotting the x,y typologies in Qgis \citep{QGIS2009}.
 
-Caption: Map of Melbourne Australia with 23000 individual map segments classified and colour coded.
+
+\begin{figure}[!htbp]
+\centering    
+\includegraphics[scale=0.80]{Images/Melbourne_5_Final-01.png}  
+\caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Note, the CBD shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 400m resolution sampling. }    
+ \label{fig:mel23000}  
+\end{figure} 
+
+
+
 
 \section{Code availability and licensing}\label{sec:available}
 
