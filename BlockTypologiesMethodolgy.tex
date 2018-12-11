@@ -161,7 +161,7 @@ urban typologies, self organizing map, unsupervised learning algorithm, urban de
 \subsection{City Typologies}\label{sec:introduction2}
 Cities are the most complex entities humans have ever created, but they are examples of 'organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present \citep{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities  \citep{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
 
-(insert figure [Typology_Dichtomies.png])
+(insert figure [Typology\_Dichtomies.png])
 
 The used elements by the existing approaches are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. One of the few consistent elements used by all existing approaches is the "Street Block", "Block", "Urban Tissue" or "insula", the area that is confined by the surrounding streets may it be build up, open space or a combination of both.
 The evaluation and classification based on the individual dichotomy is 
@@ -170,17 +170,17 @@ The evaluation and classification based on the individual dichotomy is
 
 \section{Methods}\label{sec:Methods}
 
-\subsection{Imagery sampling}\label{sec:methods2}
-The concept employed in this study was to sample maps of individual cities, calculate block size and regularity, and then use a self organizing map (SOM) to cluster different urban types.
+\subsection{Map imagery sampling}\label{sec:methods2}
+The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1692 cities with populations $>$ 300,000 people \citep{UN2014} were selected for analysis. Map imagery from Google Maps \citep{GoogleStatic2017} was used to provide globally consistent data. 
 
-1692 cities with populations $>$ 300,000 people were initially selected for analysis \citep{UN2014}. Data from Google Maps was used to identify urban form for each city in a globally consistent framework. The sampling area for each city was chosen as a circular area aligned to the city's centre, where the radius $r$ (km) of the sampling area was determined based on the population size $p$ according to \citet{Barthelemy2016}: 
+A two-stage sampling approach was applied to each city. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid \citep{UN2014} was set as a baseline. Then the sampling radius $r$ (km) was scaled, increasing by a power of 0.85 to the proportional increase in population size based on \citet{Barthelemy2016} in 
 
 \begin{equation}
 r = \sqrt{ \frac{28.27}{\pi} \bigg( \frac{p}{300,000}  \bigg)^{0.85} }
 \end{equation}
 
 
-Having identified individual cities, a two-stage sampling approach was applied. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid \citep{UN2014} was set as a baseline. As sample cities' populations increased in size, the sampling area increased by a power of 0.85 to the proportional increase in population size \citep{Barthelemy2016}. Standardising the sampling area in this manner avoided socio-political discrepancies relating to a city's `true' boundary and captured differences in population density and shape between small (e.g., Wellington, New Zealand; Izmit, Turkey) and global mega-cities (e.g., Tokyo, Japan;  Delhi, India). Location sampling areas were adjusted for the earth's curvature \citep{Sinnott1984}. Large water-bodies (e.g., oceans but not coastlines) were removed from the sampling area, as they were not indicative of urban form . 
+Standardising the sampling area in this manner avoided socio-political discrepancies relating to a city's `true' boundary and captured differences in population density and shape between small (e.g., Wellington, New Zealand; Izmit, Turkey) and global mega-cities (e.g., Tokyo, Japan;  Delhi, India). Location sampling areas were adjusted for the earth's curvature \citep{Sinnott1984}. Large water-bodies (e.g., oceans but not coastlines) were removed from the sampling area, as they were not indicative of urban form. 
 
 These procedures result in a population and water body-adjusted circular area centred on the city's central coordinates, capturing the widest extent of each city while minimising the amount of non-urban locations. For example, Figure \ref{fig:parissample} shows the resulting sampling locations used in collecting imagery for Paris. 
 
@@ -193,8 +193,9 @@ These procedures result in a population and water body-adjusted circular area ce
 
 
 
-\subsection{Imagery sources}\label{methodsimagery}
-Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a zoom level of 16 (approximately 800x800m at the equator to 450x450m at higher latitudes). These were obtained from the selected locations using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The images provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 training images were used per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas. This results in an additional 23,027 locations for Melbourne and 24,596 for Sydney. As a result, the total dataset consists of 1,714,591 images.
+\subsection{Map imagery source}\label{methodsimagery}
+
+320x320 sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 450x450m at higher latitudes) using a custom style defined with the Google Static Maps API \citep{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
 
 
 
@@ -211,7 +212,7 @@ Imagery used was Google Maps images. Images were sized 320 by 320 pixels using a
 
 \subsection{Calculating block size and regularity}\label{methodscalc}
 
-Block size and regularity were calculated for each sampled image with the following algorithm, using Java 8 \citep{Oracle2018}:
+Block size and regularity were calculated for each sampled image with the following algorithm, using the Java 8 AWT toolkit \citep{Oracle2018}:
 
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -244,11 +245,11 @@ Sample results are shown in Figure \ref{fig:floodfilled}.
  \label{fig:floodfilled}  
 \end{figure} 
 
-\subsection{City regions histograms}\label{methodshist}
+\subsection{City size and regularity histograms}\label{methodshist}
 
-Using the region counts, histograms were constructed for each image. Two histograms were constructed for each image, one each for region sizes and region regularity. The histograms were sorted into 15 bins, the number of bins calculated by Sturges' formula \citep{Sturges1926}. In addition, to reduce the skewing of data towards the first bin, variable bins were used to spread this data across the remaining bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into 15 bins.
+Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins, the number of bins determined by Sturges' formula \citep{Sturges1926}. To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
 
-Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. The histograms used in clustering the map regions are constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity (on the right) into a single histogram. 
+The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity (on the right) into a single histogram vector.
 
 
 \begin{figure}[!htbp]
@@ -268,20 +269,19 @@ Resulting histograms for sample map regions are shown in Figure \ref{fig:mapsand
  \label{fig:mapsandHist}  
 \end{figure} 
 
-\subsection{Similar city regions}\label{methodssimilarity}
 
-\begin{figure}[!htbp]
-\centering  
-\caption{\bf Map of Melbourne overlayed with a grid of 23000 satelite images colourised according based on their location with in the SOM and (insert what colour schema is used) }   
- \label{fig:clustermapsimages}  
-\end{figure} 
+\subsection{Organising maps in the self organising map}\label{methodscluster}
 
-\subsection{Clustering city regions}\label{methodscluster}
-~1.7 million images histograms (1000 images each from 1665 cities) are clustered using a self organizing map (SOM), using Java 8 \citep{Oracle2018}.  
-The SOM methodology \citep{Kohonen1982} is a data driven methodology that transforms a n dimensional data source into a lower dimensional space, mostly 2 dimensions why it is called a map, while keeping the typology of the high dimensional space intact. This transformation keeps the relative n-dimensional proximity of two datapoints intact when projecting them in the lower space. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2 dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
-The argument for the choice of this methodology lies in its ability to create two dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
-To conclude, SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}.
-The SOM was constructed with a width and height of 100 and run with 3.2 million iterations of training. The radius decay was calculated as
+
+
+
+
+
+The SOM methodology \citep{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the typology of the high dimensional space intact. This transformation keeps the relative n-dimensional proximity of two datapoints intact when projecting them in the lower space. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space (Vx,y = [v1,v2...n]).
+
+SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \citep{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \citep{Barreto2006}. 
+
+The 1.7 million maps histograms were organised using a custom built self organizing map (SOM), written in Java 8 \citep{Oracle2018}. The SOM was constructed with a width and height of 100 and run with 3.2 million iterations of training. The radius decay was calculated as
 
 
 \begin{equation} 
