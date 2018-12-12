@@ -11,6 +11,16 @@
 \bibliographystyle{naturemag}
 \usepackage[]{algorithm2e}
 
+
+% % KN, this next section restores inline images for the Nature template. Ok for first submission, remove for final submission.
+\usepackage{graphicx}
+\makeatletter
+\let\saved@includegraphics\includegraphics
+\AtBeginDocument{\let\includegraphics\saved@includegraphics}
+\renewenvironment*{figure}{\@float{figure}}{\end@float}
+\makeatother
+
+
 \title{Urban typologies through city block size and regularity.}
 
 %% Notice placement of commas and superscripts and use of &
@@ -46,7 +56,7 @@ Mark Stevenson$^{1,3}$,
 \begin{abstract}
 
 %\begin{summary}
-\section{Summary}
+%\section{Summary}
 % 150 words
 % Motivation
 Cities are a stage of human interactions, the foundation of society, a large source of pollution, and the habitat of the majority of the world's population. Although each field investigates cities from its own vantage point, we lack an objective method to compare cities around the world and therefore believe that each city is unique. This has led to repeated reinvention of solutions for problems that occur globally. Additionally, the lack of comparable measurement methods between and within cities starves us of the possibility to learn from previous examples.
@@ -70,15 +80,15 @@ As cities grow and evolve, analysis of the basic structural elements of road net
 % our solution
 We propose a novel, quantitative, and objective method to discover city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
 %% solution is globally applicabl | updates easily |  Robust | new city characteristics | can accomodate additonal data |
-Our method uses 800x800m imagery from Google Maps of custom, abstract, and stylized maps of the world's largest 1692 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in imagery samples are calculated and histograms constructed for each. A self organising map (SOM), that deploys an unsupervised learning algorithm, sorts these maps into distinct city block typologies. 
+Our method uses imagery from Google Maps of custom, abstract, and stylized maps of 800x800m sections of the world's largest 1692 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A self organising map (SOM) that deploys an unsupervised learning algorithm, sorts these maps into distinct city block typologies. 
 
 % Results
 %% Method is robust visible by global results
 %% intra inter city similarities
 %% Examples from Melbourne (and other cities)
-The proposed methodology has evaluated 1.7 million maps from 1692 cities, showing the robustness of the methodology. The resulting SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This highlights similarity between places and has shown to be able to detect city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
+The proposed methodology has evaluated 1.7 million maps from 1692 cities, showing the robustness of the methodology. The results of the SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
  
-This method is not limited to detecting differences within a city, but is able to use a neighbourhood sample in one city and identify similar locations in all other cities. The global and heterogenous collection of 1692 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM.
+This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar locations in all other cities. The global and heterogenous collection of 1692 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM.
 
 % Maybe we should add a map segment of melbourne CBD and which other areas in the world are similar.
 
@@ -166,21 +176,21 @@ Since this methodology promises to be applicable across many fields, the aim of 
 
 
 
-\section{Introduction}\label{sec:introduction}
+%\section{Introduction}\label{sec:introduction}
 
 %% Why is understanding the city so important
 %% - Health (Lancet)
 %% - Transport (Space Syntax)
 %% - Economics (Urban Economics)
 
-\subsection{City Typologies}\label{sec:introduction2}
-Cities are the most complex entities humans have ever created, but they are examples of 'organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present \cite{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies (Figure \ref{fig:TypologyDichtomies}) exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities \cite{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
+\subsection{City Typologies.}\label{sec:introduction2}
+Cities are the most complex entities humans have ever created, but they are examples of 'organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies (Figure \ref{fig:TypologyDichtomies}) exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities\cite{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
 
 
 
 \begin{figure}
 \centering    
-\includegraphics[scale=0.80,page=1]{Images/Typology\_Dichtomies.pdf}  
+\includegraphics[scale=0.80,page=1]{Images/Typology_Dichtomies.pdf}  
 \caption{\bf Different scales of dichotomies. }    
  \label{fig:TypologyDichtomies}  
 \end{figure} 
@@ -218,23 +228,23 @@ The evaluation and classification based on the individual dichotomy is
 %\section{Methods}\label{sec:Methods}
 
 \subsection{Map imagery sampling.}\label{sec:methods2}
-The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1692 cities with populations $>$ 300,000 people \cite{UN2014} were selected for analysis. Map imagery from Google Maps \cite{GoogleStatic2017} was used to provide globally consistent data. 
+The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1692 cities with populations $>$ 300,000 people\cite{UN2014} were selected for analysis. Map imagery from Google Maps\cite{GoogleStatic2017} was used to provide globally consistent data. 
 
-A two-stage sampling approach was applied to each city. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid \cite{UN2014} was set as a baseline. Then the sampling radius $r$ (km) was scaled, increasing by a power of 0.85 to the proportional increase in population size based on \cite{Barthelemy2016} in 
+A two-stage sampling approach was applied to each city. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid\cite{UN2014} was set as a baseline. Then the sampling radius $r$ (km) was scaled, increasing by a power of 0.85 to the proportional increase in population size based on Barthelemy\cite{Barthelemy2016} in 
 
 \begin{equation}
 r = \sqrt{ \frac{28.27}{\pi} \left( \frac{p}{300,000}  \right) ^{0.85} }
 \end{equation}
 
 
-Standardising the sampling area in this manner avoided socio-political discrepancies relating to a city's `true' (political) boundary and captured differences in population density and shape between small (e.g., Wellington, New Zealand; Izmit, Turkey) and global mega-cities (e.g., Tokyo, Japan;  Delhi, India). Location sampling areas were adjusted for the earth's curvature \cite{Sinnott1984}. Large water-bodies (e.g., oceans but not coastlines) were removed from the sampling area, as they were not indicative of urban form. 
+Standardising the sampling area in this manner avoided socio-political discrepancies relating to a city's `true' (political) boundary and captured differences in population density and shape between small (e.g., Wellington, New Zealand; Izmit, Turkey) and global mega-cities (e.g., Tokyo, Japan;  Delhi, India). Location sampling areas were adjusted for the earth's curvature\cite{Sinnott1984}. Large water-bodies (e.g., oceans but not coastlines) were removed from the sampling area, as they were not indicative of urban form. 
 
 These procedures result in a population and water body-adjusted circular area centred on the city's central coordinates, capturing the widest extent of each city while minimising the amount of non-urban locations. For example, Figure \ref{fig:parissample} shows the resulting sampling locations used in collecting imagery for Paris. 
 
 \begin{figure}
     \centering    
-\includegraphics[scale=0.5]{Images/Paris-StreetView-SampleLocations\_crop.png}  
-\caption{\bf Sampling locations for map imagery (from Paris, France) \cite{GoogleStatic2017}.}    
+\includegraphics[scale=0.5]{Images/Paris-StreetView-SampleLocations_crop.png}  
+\caption{\bf Sampling locations for map imagery (from Paris, France)\cite{GoogleStatic2017}.}    
  \label{fig:parissample}  
 \end{figure} 
 
@@ -249,14 +259,14 @@ These procedures result in a population and water body-adjusted circular area ce
 \begin{figure}
     \centering    
  \includegraphics[scale=0.8]{Images/SampleTraining.png}   
-\caption{\bf Four sample Google Maps training data images (from Paris, France) \cite{GoogleStatic2017}.}    
+\caption{\bf Four sample Google Maps training data images (from Paris, France)\cite{GoogleStatic2017}.}    
  \label{fig:maps}  
 \end{figure} 
 
 
 \subsection{Calculating block size and regularity.}\label{methodscalc}
 
-Block size and regularity were calculated for each sampled image with the following algorithm, using the Java 8 AWT toolkit \cite{Oracle2018}:
+Block size and regularity were calculated for each sampled image with the following algorithm, using the Java 8 AWT toolkit\cite{Oracle2018}:
 
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -289,7 +299,7 @@ Sample results are shown in Figure \ref{fig:floodfilled}.
 
 \subsection{City size and regularity histograms.}\label{methodshist}
 
-Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins, the number of bins determined by Sturges' formula \cite{Sturges1926}. To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
+Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins, the number of bins determined by Sturges' formula\cite{Sturges1926}. To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
 
 The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity (on the right) into a single histogram vector.
 
@@ -302,11 +312,11 @@ The resulting histograms for sample map regions are shown in Figure \ref{fig:map
 \end{figure} 
 
 \subsection{Organising maps in the self organising map.}\label{methodscluster}
-The self organizing map (SOM) methodology \cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
+The self organizing map (SOM) methodology\cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
 
-SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \cite{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \cite{Barreto2006}. 
+SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration\cite{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations\cite{Barreto2006}. 
 
-The 1.7 million maps histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM (written in Java 8 \cite{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million datapoints from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locats nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM calculated with
+The 1.7 million maps histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM (written in Java 8\cite{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million datapoints from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locats nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM calculated with
 
 
 \begin{equation} 
@@ -330,12 +340,12 @@ Two notable outliers exist that accumulate more than 10,000 map segments (0:21) 
 
 
 
-The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D  \cite{Jackle2017}, based on \cite{Steiger2015}. These colours were used in plotting the x,y typologies in Qgis \cite{QGIS2009}.
+The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D\cite{Jackle2017,Steiger2015}. These colours were used in plotting the x,y typologies in Qgis\cite{QGIS2009}.
 
 
 \begin{figure}
 \centering    
-\includegraphics[scale=0.70,page=1]{Images/Melbourne\_5\_Final.pdf}  
+\includegraphics[scale=0.70,page=1]{Images/Melbourne_5_Final.pdf}  
 \caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Note, the CBD shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 23,027 locations sampled at 400m resolution. }    
  \label{fig:mel23000}  
 \end{figure} 
