@@ -76,7 +76,7 @@ Our method uses 800x800m imagery from Google Maps of custom, abstract, and styli
 %% Method is robust visible by global results
 %% intra inter city similarities
 %% Examples from Melbourne (and other cities)
-The proposed methodology has evaluated 1.7 million maps from 1692 cities, showing the robustness of the methodology. The resulting SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This highlights similarity between places and has shown to be able to detect city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see figure x [Melbourne\_5.png]).
+The proposed methodology has evaluated 1.7 million maps from 1692 cities, showing the robustness of the methodology. The resulting SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This highlights similarity between places and has shown to be able to detect city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
  
 This method is not limited to detecting differences within a city, but is able to use a neighbourhood sample in one city and identify similar locations in all other cities. The global and heterogenous collection of 1692 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM.
 
@@ -300,18 +300,10 @@ The resulting histograms for sample map regions are shown in Figure \ref{fig:map
 
 \begin{figure}
     \centering    
-\includegraphics[scale=0.34]{Images/{city169\_5798\_39.739486,-105.019810}.png}  
-\includegraphics[scale=0.34]{Images/{city169\_455115\_39.737462,-105.021318}.png} 
-\includegraphics[scale=0.34]{Images/{city169\_59949\_39.732605,-105.016022}.png} 
-\includegraphics[scale=0.34]{Images/{city1521\_754459\_36.078403,-79.813528}.png} 
-\includegraphics[scale=0.06]{Images/Combinedcity169-5798.png}
-\includegraphics[scale=0.06]{Images/Combinedcity169-455115.png}
-\includegraphics[scale=0.06]{Images/Combinedcity169-59949.png}
-\includegraphics[scale=0.06]{Images/Combinedcity1521-754459.png}
+\includegraphics[scale=0.55]{Images/HistSamples.png}  
 \caption{\bf Four samples of map regions (top) and resulting histograms (bottom). Region size and regularity are joined into a combined histogram, with size frequencies on the left side of the graph and regularity on the right.}    
  \label{fig:mapsandHist}  
 \end{figure} 
-
 
 \subsection{Organising maps in the self organising map.}\label{methodscluster}
 The self organizing map (SOM) methodology \cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
