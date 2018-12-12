@@ -32,13 +32,9 @@ Jasper S. Wijnands$^{1}$,
 Jason Thompson$^{1,2}$,
 Michele Acuto$^{1}$,
 Jingcheng Wang$^{1}$,
-Haifeng Zhao$^{1}$,
-Mark Stevenson$^{1,3}$,
+Haifeng Zhao$^{1}$ \&
+Mark Stevenson$^{1,3}$
 }
-
-
-
-
 
 
 
@@ -80,7 +76,7 @@ As cities grow and evolve, analysis of the basic structural elements of road net
 % our solution
 We propose a novel, quantitative, and objective method to discover city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
 %% solution is globally applicabl | updates easily |  Robust | new city characteristics | can accomodate additonal data |
-Our method uses imagery from Google Maps of custom, abstract, and stylized maps of 800x800m sections of the world's largest 1692 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A self organising map (SOM) that deploys an unsupervised learning algorithm, sorts these maps into distinct city block typologies. 
+Our method uses imagery from Google Maps of custom, abstract, and stylized maps of 800x800m sections of the world's largest 1692 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A self organising map (SOM) that deploys an unsupervised learning algorithm, sorts these maps into distinct city block typologies (see Figure \ref{fig:somresults}). 
 
 % Results
 %% Method is robust visible by global results
@@ -107,74 +103,19 @@ Since this methodology promises to be applicable across many fields, the aim of 
 %show...'' or something similar.
 \end{abstract}
 
-%Then the body of the main text appears after the intro paragraph.
-%Figure environments can be left in place in the document.
-%\verb|\includegraphics| commands are ignored since Nature wants
-%the figures sent as separate files and the captions are
-%automatically moved to the end of the document (they are printed
-%out with the \verb|\end{document}| command. However, tables must
-%be manually moved to the end of the document, after the addendum.
-%
-%Citation of Einstein's paper \cite{Louf2014a}.
-%
-%\begin{figure}
-%%%%\includegraphics{something} % this command will be ignored
-%\caption{Each figure legend should begin with a brief title for
-%the whole figure and continue with a short description of each
-%panel and the symbols used. For contributions with methods
-%sections, legends should not contain any details of methods, or
-%exceed 100 words (fewer than 500 words in total for the whole
-%paper). In contributions without methods sections, legends should
-%be fewer than 300 words (800 words or fewer in total for the whole
-%paper).}
-%\end{figure}
-%
-%\section*{Another Section}
-%
-%Sections can only be used in Articles.  Contributions should be
-%organized in the sequence: title, text, methods, references,
-%Supplementary Information line (if any), acknowledgements,
-%interest declaration, corresponding author line, tables, figure
-%legends.
-%
-%Spelling must be British English (Oxford English Dictionary)
-%
-%In addition, a cover letter needs to be written with the
-%following:
-%\begin{enumerate}
-% \item A 100 word or less summary indicating on scientific grounds
-%why the paper should be considered for a wide-ranging journal like
-%\textsl{Nature} instead of a more narrowly focussed journal.
-% \item A 100 word or less summary aimed at a non-scientific audience,
-%written at the level of a national newspaper.  It may be used for
-%\textsl{Nature}'s press release or other general publicity.
-% \item The cover letter should state clearly what is included as the
-%submission, including number of figures, supporting manuscripts
-%and any Supplementary Information (specifying number of items and
-%format).
-% \item The cover letter should also state the number of
-%words of text in the paper; the number of figures and parts of
-%figures (for example, 4 figures, comprising 16 separate panels in
-%total); a rough estimate of the desired final size of figures in
-%terms of number of pages; and a full current postal address,
-%telephone and fax numbers, and current e-mail address.
-%\end{enumerate}
-%
-%See \textsl{Nature}'s website
-%(\texttt{http://www.nature.com/nature/submit/gta/index.html}) for
-%complete submission guidelines.
+\begin{figure}
+\centering    
+\includegraphics[scale=0.10]{Images/SomImages.png}  
+\caption{\bf  A visualisation of the 2-dimensional 100x100 SOM trained with 1.7 million map images.  Each x,y point shows Left: a representative image associated with each node while nodes without associated images are shown in black and Right: number of images associated with each node. TODO, what is the Right, number of images, did this get implemented?}    
+ \label{fig:somresults}  
+\end{figure} 
 
-
-
-
-
-
-
-
-
-
-
-
+\begin{figure}
+\centering    
+\includegraphics[scale=0.70,page=1]{Images/Melbourne_5_Final.pdf}  
+\caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Insert image on bottom left shows colour coding scheme for SOM x,y locations of Figure \ref{fig:somresults}. Note, the CBD region shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 23,027 locations sampled at 400m resolution. }    
+ \label{fig:mel23000}  
+\end{figure} 
 
 %\section{Introduction}\label{sec:introduction}
 
@@ -184,7 +125,7 @@ Since this methodology promises to be applicable across many fields, the aim of 
 %% - Economics (Urban Economics)
 
 \subsection{City Typologies.}\label{sec:introduction2}
-Cities are the most complex entities humans have ever created, but they are examples of 'organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies (Figure \ref{fig:TypologyDichtomies}) exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities\cite{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
+Cities are the most complex entities humans have ever created, but they are examples of `organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies (Figure \ref{fig:TypologyDichtomies}) exist from 3 to 6 steps and range in scale from the building material to the territorial organisation of cities\cite{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
 
 
 
@@ -331,24 +272,14 @@ where $learnRate = 0.05$.
 After the SOM was trained, each map histogram was classified to find the closest matching neuron in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
 Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
 
-\begin{figure}
-\centering    
-\includegraphics[scale=0.10]{Images/SomImages.png}  
-\caption{\bf  A visualisation of the 2 dimensional SOM trained with 1.7 million map images.  Each x,y point shows Left: a representative image associated with each node while nodes without associated images are shown in black and Right: number of images associated with each node}    
- \label{fig:somresults}  
-\end{figure} 
+
 
 
 
 The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D\cite{Jackle2017,Steiger2015}. These colours were used in plotting the x,y typologies in Qgis\cite{QGIS2009}.
 
 
-\begin{figure}
-\centering    
-\includegraphics[scale=0.70,page=1]{Images/Melbourne_5_Final.pdf}  
-\caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Note, the CBD shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 23,027 locations sampled at 400m resolution. }    
- \label{fig:mel23000}  
-\end{figure} 
+
 
 
 
@@ -376,11 +307,11 @@ The node's x,y locations were encoded into RGB colour code using a Java 8 port o
 %% Use \item's to separate, default label is "Acknowledgements"
 
 \begin{addendum}
- \item Put acknowledgements here.
+ \item While at the University of Melbourne, Kerry Nice was funded by the Transport, Health, and Urban Design (THUD) Hub.
  \item[Competing Interests] The authors declare that they have no
 competing financial interests.
  \item[Correspondence] Correspondence and requests for materials
-should be addressed to A.B.C.~(email: myaddress@nowhere.edu).
+should be addressed to Kerry A. Nice~(email: kerry.nice@unimelb.edu.au).
 \end{addendum}
 
 %%
