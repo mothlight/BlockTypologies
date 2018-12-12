@@ -136,6 +136,34 @@ Cities are the most complex entities humans have ever created, but they are exam
 
 
 
+
+
+% % % % % % % % % % % %
+%  paste the city typology introduction from Paris End
+
+
+The form a city takes and the way land is allocated can have a detrimental impact on population health and well-being, including car dependency, physical inactivity, and associated illness such as obesity and road trauma \cite{Giles-corti2016,Kleinert2016,Goenka2016,Zapata-Diomedi2017,Heesch2014,Daley2011, Cepeda2016,MingWen2008,Norman2006,Thompson2018b}. Policy-makers and urban/transport planners have an opportunity to reverse this situation by embracing strategies that pro-actively support safe active transport modes as facilitated by urban designs witnessed in some countries around the world. However, understanding the association between urban design features, transport networks, or environmental outcomes remains difficult, especially when underlying data, locations, methods, and demographics upon which statistical models are built vary considerably. As a result, globally consistent comparisons between cities are difficult to achieve. 
+
+Attempts to find quantitative methods, to create city typologies to assess, describe, and classify different types of urban form have been under way for a number of decades. First attempts used broad demographics and functional characteristics to classify different types of cities. Occupational and employment figures were used to determine a city's most important economic activity (including manufacturing, retail, diversified, wholesale, transportation, mining, education, and resorts) \cite{Harris1943}. Other studies used economic activity data to classify cities into broad functional typologies, such as manufacturing, retail, professional services, and financial services \cite{Nelson1955}. \cite{Bruce1971} performed a cluster analysis based on the socio-economic profiles of selected cities as well as a number of census based statistics to group them into clusters. However, in these studies, the resulting typologies are more functional in nature, making the contribution of urban design difficult to examine.
+
+New techniques to define city typologies emerged in the 1980s and 90s with the growing availability of databases of spatial data and increased computing power. Much of this work focused on road infrastructure in cities, and drew from the structural sociology field, in which groups of people were represented as part of a broader network structure. The `space syntax' of \cite{Hillier1996} established a correlation between configurations of urban forms and variations of human interactions within it. 
+
+Other recent remote-sensing based methods depart from the pure network analysis methods to derive urban typologies. Night-time light data has been used to categorise cities into stages of urbanisation and levels of economic activities \cite{Zhang2013}. Urban metrics (road geometry, building dimensions and heights, and vegetation heights) have also been used to classify cities into typologies of differing periods of historical design and urban planning (i.e. 19th Century, 1950s, 1970s, etc.) \cite{Hermosilla2014}.
+
+Building on recent advances in computing power, artificial intelligence, and urban imagery, new approaches have been created to discover unique visual characteristics of cities and how they are used. For example, large numbers of geo-tagged photos have been used to detect patterns of urban usage and public perception of a number of areas' functional and social attributes \cite{Liu2016,Zhou2014a}. Place Pulse, a database of urban imagery using crowd-sourced classifications (including safety, beautiful, and liveliness) has been built to quantify perceptions of urban areas \cite{Dubey2016,Naik2014} and inequality \cite{Salesses2013}. 
+\cite{Doersch2012} used a large number of geo-localised street level images to discover common visual features across a number of cities.
+
+
+Still, most methods described above require some amount of subjective classification of local input data; the quality and availability of which can vary widely across collection or political districts. To overcome these limitations, we demonstrate a new `bottom-up' approach. We train three neural networks to recognise specific cities using millions of street view, satellite, and digital street map images, and perform a case study using two Australian cities, Melbourne and Sydney. Paris, France is an iconic international city \cite{Anholt2006} with widely recognisable visual elements \cite{Doersch2012}, leading many cities (including Melbourne and Sydney) to claim that they have a `Paris-end' of town \cite{Williams2010}, or are a `Paris on the [insert name of local river]' \cite{Wilden2013} (e.g. `Paris on the Yarra'). This study examines whether Melbourne or Sydney truly claim to have a `Paris-end' and demonstrates a new fundamental methodology to objectively analyse urban areas using big data imagery.
+
+
+
+
+
+
+
+
+
 \begin{figure}
 \centering    
 \includegraphics[scale=0.80,page=1]{Images/Typology_Dichtomies.pdf}  
@@ -276,7 +304,7 @@ learnDecay = learnRate * e^{-1 * iteration / timeConstant}
 \end{equation}
 where $learnRate = 0.05$.
 
-After the SOM was trained, each map histogram was classified to find the closest matching neuron in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
+After the SOM was trained, each map histogram was classified to find the closest matching node in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
 Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
 
 
