@@ -36,7 +36,6 @@ Haifeng Zhao$^{1}$,
 Mark Stevenson$^{1,3}$,
 }
 
-
 \begin{document}
 
 \maketitle
@@ -57,9 +56,7 @@ The method is robust in detecting similarities between cities but between neighb
 
 As cities grow and evolve, the road networks and urban block structure provides clues as to the process and governance under which this growth occurred. We propose a novel quantitative and objective method to discover city typologies on the neighborhood scale of street patterns, city block size and regularity. This follows \cite{Louf2014a}'s finding that a systematic quantitative method to identify different neighborhoods is currently lacking. 
 
-Our method 800m x 800m samples of custom abstract / stylized maps from Google Maps of the world's largest 1692 cities. Using a floodfill, the size and regularity of each city blocks in a samples is calculated and histograms constructed for each map sample. A self organising map (SOM), that deploys an unsupervised learning algorithm is used, for feature detection and to cluster (arrange) these images into city block typologies. 
-
-
+Our method uses 800m x 800m samples of custom abstract / stylized maps from Google Maps of the world's largest 1692 cities. Using a floodfill, the size and regularity of each city blocks in a samples is calculated and histograms constructed for each map sample. A self organising map (SOM), that deploys an unsupervised learning algorithm is used, for feature detection and to arrange (cluster) these images into city block typologies. 
 
 
 
@@ -85,9 +82,9 @@ Cities are the most complex entities humans have ever created, but they are exam
 \end{figure} 
 
 
+The elements used by the existing approaches to classify cities are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. Even though all dichotomies are derived from a small number of observed cities in a geographic region the consistent element used by all approaches is the "Street Block", "Block", "Urban Tissue" or "insula". It is defined as the area that is confined by the surrounding streets may it be build up, open space or a combination of both. This highlights the fundamental nature of blocks as a simplified schematic view of the city \cite{Southworth2013}, highlighting the both the structure and organization of the city as well as the process of the urban development, and identifies the city block as the urban element with the highest information density for urban analysis.  
+Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Existing empirical methods highlight these mechanisms by evaluating the street network typology \cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry \cite{Louf2014a} why the proposed method uses both size and regularity information within a neighbourhood.
 
-The used elements by the existing approaches are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. One of the few consistent elements used by all existing approaches is the "Street Block", "Block", "Urban Tissue" or "insula", the area that is confined by the surrounding streets may it be build up, open space or a combination of both.
-The evaluation and classification based on the individual dichotomy is 
 
 
 
@@ -118,7 +115,7 @@ These procedures result in a population and water body-adjusted circular area ce
 
 \subsection{Map imagery source}\label{methodsimagery}
 
-320x320 sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 450x450m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
+320x320 pixel sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 450x450m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
 
 
 
@@ -152,7 +149,7 @@ Block size and regularity were calculated for each sampled image with the follow
   Floodfill and count the number of pixels outside of the rectangle as measure of irregularity;\\
   Add size and regularity counts to list for the image;\\
  }
- Store list in database;\\
+ Store list in database with association to respective map;\\
  \caption{Calculation of block sizes and regularity}
 \end{algorithm}
 
@@ -190,7 +187,7 @@ The resulting histograms for sample map regions are shown in Figure \ref{fig:map
 
 
 \subsection{Organising maps in the self organising map}\label{methodscluster}
-The self organizing map (SOM) methodology \cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
+The self organizing map (SOM) methodology \cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index, calculated as the euclidian distance, of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
 
 SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration \cite{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations \cite{Barreto2006}. 
 
@@ -218,7 +215,7 @@ Two notable outliers exist that accumulate more than 10,000 map segments (0:21) 
 
 
 
-The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D  \cite{Jackle2017}, based on \cite{Steiger2015}. These colours were used in plotting the x,y typologies in Qgis \cite{QGIS2009}.
+The node's x,y locations were encoded into RGB colour code using a Java 8 port of Color2D  \cite{Jackle2017}, based on \cite{Steiger2015}. These colours were used in plotting the x,y typologies in qGIS \cite{QGIS2009}.
 
 
 \begin{figure}
@@ -264,3 +261,7 @@ The node's x,y locations were encoded into RGB colour code using a Java 8 port o
 \endinput
 %%
 %% End of file `elsarticle-template-harv.tex'.
+\cite{Hillier1989}
+Hillier, Bill, and Julienne Hanson. The social logic of space. Cambridge university press, 1989.
+\cite{Southworth2013}
+Southworth, Michael, and Eran Ben-Joseph. Streets and the Shaping of Towns and Cities. Island Press, 2013.
