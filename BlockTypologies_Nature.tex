@@ -234,7 +234,9 @@ These procedures result in a population and water body-adjusted circular area ce
 
 \subsection{Map imagery source.}\label{methodsimagery}
 
-320x320 pixel sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 450x450m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
+320x320 pixel sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 335x335m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). To ensure each map covers the same area, each was cropped and resized before processing. The sampled city at the highest latitude was at 64 degrees north, so each image was cropped and resized to include a region of 335x335m. 
+
+The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
 
 
 
@@ -252,31 +254,31 @@ Block size and regularity were calculated for each sampled image with the follow
 
 \begin{algorithm}[H]
 \SetAlgoLined
-\KwResult{List of region sizes and region regularity for an image stored in Sqlite3 database }
+\KwResult{Histogram of region sizes and region regularity for an image}
+ Using latitude of image sample, determine the number of pixels relative to 335 meters;\\
+ Crop image to this pixel width and height;\\
+ Resize image back to 320x320m;\\
  Start at top left point of image;\\
  \While{Locate next white pixel by iterating across rows and columns}{
   Floodfill area using boundaries of all non-white colors (i.e. black roads, green space, blue water);\\
-  Count pixel size of region;\\
-  Find x1 in region with the lowest x value;\\
-  Find y1 in region with the lowest y value;\\
-  Find x2 in region with the highest x value;\\
-  Find y2 in region with the highest y value;\\
-  Construct rectangle using the four vertices (x1,y1), (x1, y2), (x2,y1), (x2,y2);\\
-  Floodfill and count the number of pixels outside of the rectangle as measure of irregularity;\\
+  Count pixel size of region;\\  
+  Construct a bounding box of the cloud of points in the region using Fast Convex Hull;\\
+  Count the pixels inside the bounding box;\\
+  Use the difference between the bounding box size and the region size as measure of irregularity;\\
   Add size and regularity counts to list for the image;\\
  }
- Store list in database;\\
- \caption{Calculation of block sizes and regularity}
+ Sort each list of size and regularity into 15 variable histogram bins;\\
+ Combine the two histograms into a single histogram vector to be used in the SOM;\\
+ \caption{Calculation of histograms of block sizes and regularity}
 \end{algorithm}
 
-
-Sample results are shown in Figure \ref{fig:floodfilled}.
+Samples of size floodfills and regularity floodfills are shown in Figure \ref{fig:floodfilled}. Sample histograms used in the SOM are shown in Figure \ref{fig:mapsandHist}.
 
 \begin{figure}
 \centering    
 \includegraphics[scale=0.8]{Images/FloodSample.png}  
 \includegraphics[scale=0.8]{Images/FloodfillRegSample.png}     
-\caption{\bf Results of flood filled city blocks.}    
+\caption{\bf Results of flood filled city blocks. (Top) Floodfills of each individual region to determine size. (Bottom) Bounding boxes outlined in red, filled with yellow and count of yellow pixels used for bounding box size.}    
  \label{fig:floodfilled}  
 \end{figure} 
 
