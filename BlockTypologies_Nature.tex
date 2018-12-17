@@ -5,13 +5,19 @@
 
 \documentclass{nature}
 
+\usepackage[
+active,
+generate=Abstract_excerpt,
+extract-env=figure
+]{extract}
+
 %% make sure you have the nature.cls and naturemag.bst files where
 %% LaTeX can find them
 
 \bibliographystyle{naturemag}
 \usepackage[]{algorithm2e}
 
-
+\begin{extract}
 % % KN, this next section restores inline images for the Nature template. Ok for first submission, remove for final submission.
 \usepackage{graphicx}
 \makeatletter
@@ -19,9 +25,10 @@
 \AtBeginDocument{\let\includegraphics\saved@includegraphics}
 \renewenvironment*{figure}{\@float{figure}}{\end@float}
 \makeatother
-
+\end{extract}
 
 \title{Urban typologies through city block size and regularity.}
+
 
 %% Notice placement of commas and superscripts and use of &
 %% in the author list
@@ -37,7 +44,11 @@ Mark Stevenson$^{1,3}$
 
 
 
+
 \begin{document}
+
+
+
 
 \maketitle
 
@@ -48,6 +59,7 @@ Mark Stevenson$^{1,3}$
  \\ \textsuperscript{*} These authors contributed equally to this work
 \end{affiliations}
 
+\begin{extract}
 \begin{abstract}
 
 %\begin{summary}
@@ -116,6 +128,7 @@ Since this methodology promises to be applicable across many fields, the aim of 
  \label{fig:mel23000}  
 \end{figure} 
 
+\end{extract}
 % % Beginning of main text of the article
 
 %Articles are original reports whose conclusions represent a substantial advance in understanding of an important problem and have immediate, far-reaching implications. They do not normally exceed 5 pages of Nature and, as a guideline, allow up to 50 references. (One page of undiluted text is about 1,300 words.) Articles have a summary, separate from the main text, of up to 150 words, which does not have references, and does not contain numbers, abbreviations, acronyms or measurements unless essential. It is aimed at readers outside the discipline. This summary contains a paragraph (2-3 sentences) of basic-level introduction to the field; a brief account of the background and rationale of the work; a statement of the main conclusions (introduced by the phrase 'Here we show' or its equivalent); and finally, 2-3 sentences putting the main findings into general context so it is clear how the results described in the paper have moved the field forwards. 
