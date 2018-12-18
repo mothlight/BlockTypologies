@@ -154,17 +154,23 @@ Since this methodology promises to be applicable across many fields, the aim of 
 \subsection{City Typologies.}\label{sec:introduction2}
 Cities are the most complex entities humans have ever created, but they are examples of `organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. Approaches that aim to classify the built form are using a hierarchical dichotomy based on the scale of urban element. Different scales of dichotomies (Figure \ref{fig:TypologyDichtomies}) exist from 3 to 6 levels and range in scale from the building material to the territorial organisation of cities\cite{Lynch1981,Conzen1960,Caniggi1979,Castex1980,Mouden1988,Allain2004}.
 
+\begin{figure}
+\centering    
+\includegraphics[scale=0.80,page=1]{Images/Typology_Dichtomies.pdf}  
+\caption{\bf Different scales of dichotomies. }    
+ \label{fig:TypologyDichtomies}  
+\end{figure} 
 
-% % this section is from the methodology document
-The elements used by the existing approaches to classify cities are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. Even though all dichotomies are derived from a small number of observed cities in a geographic region the consistent element used by all approaches is the "Street Block", "Block", "Urban Tissue" or "Tessuto". It is defined as the area that is confined by the surrounding streets may it be build up, open space or a combination of both. This highlights the fundamental nature of blocks as a simplified schematic view of the city \cite{Southworth2013}, highlighting the both the structure and organization of the city as well as the process of the urban development, and identifies the city block as the urban element with the highest information density for urban analysis.  
-Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Existing empirical methods highlight these mechanisms by evaluating the street network typology \cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry \cite{Louf2014a} why the proposed method uses both size and regularity information within a neighbourhood.
+
+The elements used by the existing approaches to classify cities are not coherent. Some start at the level of rooms, while others expand to a larger scale. Even though all dichotomies are derived from a small number of observed cities in a geographic region, the consistent element used by all approaches is the `Street Block', `Block', `Urban Tissue' or `Tessuto'. Street blocks are defined as the area that is bounded by surrounding streets. The blocks may be build up, open space, or a combination of both. The fundamental nature of city blocks can be seen as a simplified schematic view of the city\cite{Southworth2013}, highlighting the both the structure and organization of the city, as well as the process of the urban development. This makes the city block the most accessible urban element with the highest information density for urban analysis.  
+
+
+Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Existing empirical methods highlight these mechanisms by evaluating the street network typology\cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry\cite{Louf2014a}. This is why the proposed method uses both size and regularity information within a neighbourhood.
 % % end paste from methods
 
 
 % % % % % % % % % % % %
 %  paste the city typology introduction from Paris End
-
-
 The form a city takes and the way land is allocated can have a detrimental impact on population health and well-being, including car dependency, physical inactivity, and associated illness such as obesity and road trauma\cite{Giles-corti2016,Kleinert2016,Goenka2016,Zapata-Diomedi2017,Heesch2014,Daley2011, Cepeda2016,MingWen2008,Norman2006,Thompson2018b}. Policy-makers and urban/transport planners have an opportunity to reverse this situation by embracing strategies that pro-actively support safe active transport modes as facilitated by urban designs witnessed in some countries around the world. However, understanding the association between urban design features, transport networks, or environmental outcomes remains difficult, especially when underlying data, locations, methods, and demographics upon which statistical models are built vary considerably. As a result, globally consistent comparisons between cities are difficult to achieve. 
 
 Attempts to find quantitative methods, to create city typologies to assess, describe, and classify different types of urban form have been under way for a number of decades. First attempts used broad demographics and functional characteristics to classify different types of cities. Occupational and employment figures were used to determine a city's most important economic activity (including manufacturing, retail, diversified, wholesale, transportation, mining, education, and resorts)\cite{Harris1943}. Other studies used economic activity data to classify cities into broad functional typologies, such as manufacturing, retail, professional services, and financial services\cite{Nelson1955}. Bruce\cite{Bruce1971} performed a cluster analysis based on the socio-economic profiles of selected cities as well as a number of census based statistics to group them into clusters. However, in these studies, the resulting typologies are more functional in nature, making the contribution of urban design difficult to examine.
@@ -175,37 +181,23 @@ Other recent remote-sensing based methods depart from the pure network analysis 
 
 Building on recent advances in computing power, artificial intelligence, and urban imagery, new approaches have been created to discover unique visual characteristics of cities and how they are used. For example, large numbers of geo-tagged photos have been used to detect patterns of urban usage and public perception of a number of areas' functional and social attributes\cite{Liu2016,Zhou2014a}. Place Pulse, a database of urban imagery using crowd-sourced classifications (including safety, beauty, and liveliness) has been built to quantify perceptions of urban areas\cite{Dubey2016,Naik2014} and inequality\cite{Salesses2013}. Doersch\cite{Doersch2012} used a large number of geo-localised street level images to discover common visual features across a number of cities.
 
-
 Still, most methods described above require some amount of subjective classification of local input data; the quality and availability of which can vary widely across collection or political districts. To overcome these limitations, we demonstrate a new `bottom-up' approach. 
-
-
-% XXX This is purely Paris-End ??
-We train three neural networks to recognise specific cities using millions of street view, satellite, and digital street map images, and perform a case study using two Australian cities, Melbourne and Sydney. Paris, France is an iconic international city\cite{Anholt2006} with widely recognisable visual elements\cite{Doersch2012}, leading many cities (including Melbourne and Sydney) to claim that they have a `Paris-end' of town\cite{Williams2010}, or are a `Paris on the [insert name of local river]'\cite{Wilden2013} (e.g. `Paris on the Yarra'). This study examines whether Melbourne or Sydney truly claim to have a `Paris-end' and demonstrates a new fundamental methodology to objectively analyse urban areas using big data imagery.
+% % % end of paste from Paris End introduction
 
 
 
 
-
-
-
-
-
-\begin{figure}
-\centering    
-\includegraphics[scale=0.80,page=1]{Images/Typology_Dichtomies.pdf}  
-\caption{\bf Different scales of dichotomies. }    
- \label{fig:TypologyDichtomies}  
-\end{figure} 
 
 %% XXX copy of introduction?
-The elements used by the existing approaches to classify cities are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. Even though all dichotomies are derived from a small number of observed cities in a geographic region the consistent element used by all approaches is the `Street Block', `Block', `Urban Tissue' or `insula'. It is defined as the area that is confined by the surrounding streets may it be build up, open space or a combination of both. This highlights the fundamental nature of blocks as a simplified schematic view of the city\cite{Southworth2013}, highlighting the both the structure and organization of the city as well as the process of the urban development, and identifies the city block as the urban element with the highest information density for urban analysis.  
+% % these two paragraphs are a repeat of above, commenting out
+%The elements used by the existing approaches to classify cities are not coherent, some are using going to the level of rooms, others are expanding on the larger scale. Even though all dichotomies are derived from a small number of observed cities in a geographic region the consistent element used by all approaches is the `Street Block', `Block', `Urban Tissue' or `insula'. It is defined as the area that is confined by the surrounding streets may it be build up, open space or a combination of both. This highlights the fundamental nature of blocks as a simplified schematic view of the city\cite{Southworth2013}, highlighting the both the structure and organization of the city as well as the process of the urban development, and identifies the city block as the urban element with the highest information density for urban analysis.  
 
-Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Existing empirical methods highlight these mechanisms by evaluating the street network typology\cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry \cite{Louf2014a} why the proposed method uses both size and regularity information within a neighbourhood.
+%Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Existing empirical methods highlight these mechanisms by evaluating the street network typology\cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry \cite{Louf2014a} why the proposed method uses both size and regularity information within a neighbourhood.
 
 
 
 \subsection{Concise, focused account of the findings.}
-The method has shown to be robust and globally applicable in identifying typologies of cities and neighbourhoods. The use of blocks as defined as the space between streets is both universally applicable and shows to have a high information yield. The 2-dimensional representation of this n dimensional information space is showing high potential for further investigations and associations with other indicators of urban activities, human life and economic output.
+The method has shown to be robust and globally applicable in identifying typologies of cities and neighbourhoods. The use of blocks as defined as the space between streets is both universally applicable and shows to have a high information yield. The 2-dimensional representation of this n-dimensional information space is showing high potential for further investigations and associations with other indicators of urban activities, human life and economic output.
 
 \subsection{One or two short paragraphs of discussion.}
 The method has highlighted that the nature of cities is not unique and that individual neighbourhoods can be compared across continents. The findings also indicate that there is a common structure and that city typologies should be built across cities rather than within, that city centres are more comparable to other centres than to other elements of the same city.
