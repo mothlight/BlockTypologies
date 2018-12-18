@@ -79,30 +79,31 @@ This method can now be deployed to find correlations with other indicators, to h
 %\end{summary}
 
 % City's 'uniqueness' 
-As cities grow and evolve, analysis of the basic structural elements of road networks and urban blocks can provide clues as to the processes and governance under which city development occurred. The built environment has been shown to influence a wide range of outcomes, including health, transport, and economic opportunity. Methods to study cities through these basic structural elements are essential to many disciplines conducting urban research and provide a foundation on which they can conducting their research.
+Cities grow, evolve and change, analysing the basic structural elements of road networks and urban blocks provides clues as to the processes and governance under which city development occures. The built environment influences a wide range of outcomes, including health, transport, and economic opportunity. Methods to study cities through these basic structural elements are essential to many disciplines conducting urban research and provide a foundation on which they can conducting their research.
 % Implication of city structure and form
  % and in particular / especially the road network and block typology,%
 
 
 % our solution
-We propose a novel, quantitative, and objective method to discover city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
+We propose a novel, quantitative, and objective method to discover global city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
 %% solution is globally applicabl | updates easily |  Robust | new city characteristics | can accomodate additonal data |
-Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1667 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histogram representations constructed for each. A SOM is then used to sort the histograms, projecting the high dimensional space onto a 2-dimensional plane, revealing distinct city block typologies (see Figure \ref{fig:somresults}). 
+Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1667 cities. Using a computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histogram representations constructed for each. A SOM is then used to sort the histograms, projecting the high dimensional space onto a 2-dimensional plane, revealing distinct city block typologies (see Figure \ref{fig:somresults}). 
 
 % Results
 %% Method is robust visible by global results
 %% intra inter city similarities
 %% Examples from Melbourne (and other cities)
-The methodology has evaluated 1.7 million maps from 1667 cities, showing the robustness and global applicability of the methodology. The results of the SOM are used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
+The methodology has evaluated >1.7 million maps (doublication: from 1667 cities), showing the robustness and global applicability of the methodology(see Figure \ref{fig:world}). The results of the SOM are used to colour code and highlight the map samples according to their SOM ( X : Y ) coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
+%% "similarities between city locations" sounds like we compare the locations maybe change to "similarities between city neighbourhoods" or "within cities" to tie it to the next paragraph
  
-This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar locations in all other cities. The global and heterogeneous collection of 1667 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM (see Figure \ref{fig:world}).
+This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar neighborhoods "in all other cities" or "across the globe". The global and heterogeneous collection of 1667 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM (see Figure \ref{fig:world}).
 
 % Maybe we should add a map segment of melbourne CBD and which other areas in the world are similar.
 
 
 % Future Work
 %% Find correlations with other indicators
-Since this methodology promises to be applicable across many fields, the aim of future investigation(s) is to find correlations between urban typologies and other indicators. The potential candidates for such investigations are energy intensity, particular matter, and GDP since they are indicators that are globally available. The logical consequence is to test the methodology towards its predictive power and application in design, planning, and management of urban systems.
+Since this methodology promises to be "fundamental" or "applicable" across many fields, the aim of future investigation(s) is to find correlations between urban typologies and other indicators. The potential candidates for such investigations are energy intensity, particular matter, and GDP, indicators that are globally available and comparable. The logical consequence is to test the methodology towards its predictive power and application in design, planning, and management of urban systems.
 
 
 %For Nature, the abstract is really an introductory paragraph set
