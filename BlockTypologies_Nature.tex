@@ -87,13 +87,13 @@ As cities grow and evolve, analysis of the basic structural elements of road net
 % our solution
 We propose a novel, quantitative, and objective method to discover city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
 %% solution is globally applicabl | updates easily |  Robust | new city characteristics | can accomodate additonal data |
-Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1667 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A SOM is then used to sort these maps into distinct city block typologies (see Figure \ref{fig:somresults}). 
+Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1667 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histogram representations constructed for each. A SOM is then used to sort the histograms, projecting the high dimensional space onto a 2-dimensional plane, revealing distinct city block typologies (see Figure \ref{fig:somresults}). 
 
 % Results
 %% Method is robust visible by global results
 %% intra inter city similarities
 %% Examples from Melbourne (and other cities)
-The methodology has evaluated 1.7 million maps from 1667 cities, showing the robustness of the methodology. The results of the SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
+The methodology has evaluated 1.7 million maps from 1667 cities, showing the robustness and global applicability of the methodology. The results of the SOM are used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
  
 This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar locations in all other cities. The global and heterogeneous collection of 1667 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM (see Figure \ref{fig:world}).
 
@@ -124,7 +124,7 @@ Since this methodology promises to be applicable across many fields, the aim of 
 \begin{figure}
 \centering    
 \includegraphics[scale=0.70,page=1]{Images/Melbourne_5_Final.pdf}  
-\caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Insert image on bottom left shows colour coding scheme for SOM x,y locations of Figure \ref{fig:somresults}. Note, the CBD region shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 23,027 locations sampled at 400m resolution. }    
+\caption{\bf  Map of Melbourne, Australia with 24027 individual map segments classified and colour coded. Insert image on bottom left shows colour coding scheme for SOM x,y locations of Figure \ref{fig:somresults}. Note, the central business district (CBD) region shows additional points due to inclusion of the 1000 circular sampling procedure in addition to the 23,027 locations sampled at 400m resolution. }    
  \label{fig:mel23000}  
 \end{figure} 
 
@@ -152,9 +152,9 @@ Since this methodology promises to be applicable across many fields, the aim of 
 %% - Economics (Urban Economics)
 
 \subsection{City Typologies.}\label{sec:introduction2}
-Cities are the most complex entities humans have ever created, but they are examples of `organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. The form a city takes and the way land is allocated can have a detrimental impact on population health and well-being, including car dependency, physical inactivity, and associated illness such as obesity and road trauma\cite{Giles-corti2016,Kleinert2016,Goenka2016,Zapata-Diomedi2017,Heesch2014,Daley2011, Cepeda2016,MingWen2008,Norman2006,Thompson2018b}. Policy-makers and urban/transport planners have an opportunity to reverse this situation by embracing strategies that pro-actively support safe active transport modes as facilitated by urban designs witnessed in some countries around the world. However, understanding the association between urban design features, transport networks, or environmental outcomes remains difficult, especially when underlying data, locations, methods, and demographics upon which statistical models are built vary considerably. As a result, globally consistent comparisons between cities are difficult to achieve. 
+Cities are the most complex entities humans have ever created, but they are examples of `organised complexity' that allow us to discern some kind of order within the diversity and complexity cities present\cite{Kropf2014}. The form a city takes and the way land uses are allocated can have a detrimental impact on population health and well-being, including car dependency, physical inactivity, and associated illness such as obesity and road trauma\cite{Giles-corti2016,Kleinert2016,Goenka2016,Zapata-Diomedi2017,Heesch2014,Daley2011, Cepeda2016,MingWen2008,Norman2006,Thompson2018b}. Policy-makers and urban/transport planners have an opportunity to reverse this situation by embracing strategies that pro-actively support safe active transport modes as facilitated by urban designs witnessed in some countries around the world. However, understanding the association between urban design features, transport networks, or environmental outcomes remains difficult, especially when underlying data, locations, methods, and demographics upon which statistical models are built vary considerably. As a result, globally consistent comparisons between cities are difficult to achieve. 
 
-Attempts to find quantitative methods, to create city typologies to assess, describe, and classify different types of urban form have been under way for a number of decades. First attempts used broad demographics and functional characteristics to classify different types of cities. Occupational and employment figures were used to determine a city's most important economic activity (including manufacturing, retail, diversified, wholesale, transportation, mining, education, and resorts)\cite{Harris1943}. Other studies used economic activity data to classify cities into broad functional typologies, such as manufacturing, retail, professional services, and financial services\cite{Nelson1955}. Bruce\cite{Bruce1971} performed a cluster analysis based on the socio-economic profiles of selected cities as well as a number of census based statistics to group them into clusters. However, in these studies, the resulting typologies are more functional in nature, making the contribution of urban design difficult to examine.
+Attempts to find quantitative methods, to create city typologies to assess, describe, and classify different types of urban form, have been under way for a number of decades. First attempts used broad demographics and functional characteristics to classify different types of cities. Occupational and employment figures were used to determine a city's most important economic activity (including manufacturing, retail, diversified, wholesale, transportation, mining, education, and resorts)\cite{Harris1943}. Other studies used economic activity data to classify cities into broad functional typologies, such as manufacturing, retail, professional services, and financial services\cite{Nelson1955}. Bruce\cite{Bruce1971} performed a cluster analysis based on the socio-economic profiles of selected cities as well as a number of census based statistics to group them into clusters. However, in these studies, the resulting typologies are more functional in nature, making the contribution of urban design difficult to examine.
 
 Building on recent advances in computing power, artificial intelligence, and urban imagery, new approaches have been created to discover unique visual characteristics of cities and how they are used. For example, large numbers of geo-tagged photos have been used to detect patterns of urban usage and public perception of a number of areas' functional and social attributes\cite{Liu2016,Zhou2014a}. Place Pulse, a database of urban imagery using crowd-sourced classifications (including safety, beauty, and liveliness) has been built to quantify perceptions of urban areas\cite{Dubey2016,Naik2014} and inequality\cite{Salesses2013}. Doersch\cite{Doersch2012} used a large number of geo-localised street level images to discover common visual features across a number of cities. Enabled by remote sensing data, night-time light data has been used to categorise cities into stages of urbanisation and levels of economic activities\cite{Zhang2013}. Urban characteristics (road geometry, building dimensions and heights, and vegetation heights) have also been used to classify cities into typologies of differing periods of historical design and urban planning (i.e. 19th Century, 1950s, 1970s, etc.)\cite{Hermosilla2014}.
 
@@ -170,12 +170,12 @@ A focus on road infrastructure in cities, and drawing from the structural sociol
 Identifying common patterns is the path towards understanding the formation, evolution and morphogenesis of cities and helps us to understand the underlying mechanism and forces at play. Still, most methods described above require some amount of subjective classification of local input data; the quality and availability of which can vary widely across collection or political districts. Existing empirical methods highlight these mechanisms by evaluating the street network typology\cite{Hillier1989} but neglect their geometrical expanse and neglect their function as places to stay.  A method cannot rely solely on the topology but needs to incorporate the geometry\cite{Louf2014a}. This is why the proposed method uses both size and regularity information within a neighbourhood.  
 
 
-\subsection{Concise, focused account of the findings.}
+\subsection{Findings from the application of the methodology.}
 The method has shown to be robust and globally applicable in identifying typologies of cities and neighbourhoods. The use of blocks as defined as the space between streets is both universally applicable and shows to have a high information yield. The 2-dimensional representation of this n-dimensional information space shows high potential for further investigations and associations with other indicators of urban activities, human life and economic output.
 
-\subsection{One or two short paragraphs of discussion.}
+\subsection{Discussion.}
 The method has highlighted that the nature of cities is not unique and that individual neighbourhoods can be compared across continents. The findings also indicate that there is a common structure and that city typologies should be built across cities rather than within, that city centres are more comparable to other centres than to other elements of the same city.
-It also allows us now to compare cities on a global scale and investigate further the nature of human settlement. In contrast to previous methods which were limited by the available data from a handful of cities this method is spanning the globe and is able to accommodate new datasets as they arise.  
+It also allows us now to compare cities on a global scale and investigate further the nature of human settlement. In contrast to previous methods which were limited by the available data from a handful of cities, this method is capable of spanning the globe and can accommodate new datasets as they arise.  
 
 
 \begin{methods}
@@ -196,7 +196,7 @@ It also allows us now to compare cities on a global scale and investigate furthe
 %\section{Methods}\label{sec:Methods}
 
 \subsection{Map imagery sampling.}\label{sec:methods2}
-The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1667 cities with populations $>$ 300,000 people\cite{UN2014} were selected for analysis. Map imagery from Google Maps\cite{GoogleStatic2017} was used to provide globally consistent data. 
+The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1692 cities with populations greater than 300,000 people\cite{UN2014} were selected for analysis. Map imagery from Google Maps\cite{GoogleStatic2017} was used to provide globally consistent data. 
 
 A two-stage sampling approach was applied to each city. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid\cite{UN2014} was set as a baseline. Then the sampling radius $r$ (km) was scaled, increasing by a power of 0.85 to the proportional increase in population size based on Barthelemy\cite{Barthelemy2016} in 
 
@@ -220,7 +220,7 @@ These procedures result in a population and water body-adjusted circular area ce
 
 \subsection{Map imagery source.}\label{methodsimagery}
 
-320x320 pixel sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 335x335m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). To ensure each map covers the same area, each was cropped and resized before processing. The sampled city at the highest latitude was at 64 degrees north, so each image was cropped and resized to include a region of 335x335m. 
+320x320 pixel sized map images were sampled using a zoom level of 16 (covering 750x750m at the equator and 335x335m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). To ensure each map covers the same area, each image was cropped and resized before processing. The sampled city at the highest latitude was at 64 degrees north, so each image was cropped and resized to include a region of 335x335m. 
 
 The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1667. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
 
@@ -241,9 +241,9 @@ Block size and regularity were calculated for each sampled image with the follow
 \begin{algorithm}[H]
 \SetAlgoLined
 \KwResult{Histogram of region sizes and region regularity for an image}
- Using latitude of image sample, determine the number of pixels relative to 335 meters;\\
+ Using latitude of image sample, determine the number of pixels needed to contain 335x335 meters;\\
  Crop image to this pixel width and height;\\
- Resize image back to 320x320m;\\
+ Resize image back to 320x320 pixels;\\
  Start at top left point of image;\\
  \While{Locate next white pixel by iterating across rows and columns}{
   Floodfill area using boundaries of all non-white colors (i.e. black roads, green space, blue water);\\
@@ -264,15 +264,15 @@ Samples of size floodfills and regularity floodfills are shown in Figure \ref{fi
 \centering    
 \includegraphics[scale=0.8]{Images/FloodSample.png}  
 \includegraphics[scale=0.8]{Images/FloodfillRegSample.png}     
-\caption{\bf Results of flood filled city blocks. (Top) Floodfills of each individual region to determine size. (Bottom) Bounding boxes outlined in red, filled with yellow and count of yellow pixels used for bounding box size.}    
+\caption{\bf Results of flood filled city blocks. (Top) Floodfills of each individual region to determine size. (Bottom) Bounding boxes outlined in red, filled with yellow and count of yellow pixels used for bounding box size. Underlying black outlined regions used for region size.}    
  \label{fig:floodfilled}  
 \end{figure} 
 
 \subsection{City size and regularity histograms.}\label{methodshist}
 
-Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins, the number of bins determined by Sturges' formula\cite{Sturges1926}. To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
+Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins (the number of bins determined by Sturges' formula\cite{Sturges1926}). To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
 
-The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity (on the right) into a single histogram vector.
+The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity frequencies (on the right) into a single histogram vector.
 
 
 \begin{figure}
@@ -282,18 +282,18 @@ The resulting histograms for sample map regions are shown in Figure \ref{fig:map
  \label{fig:mapsandHist}  
 \end{figure} 
 
-\subsection{Organising maps in the self organising map.}\label{methodscluster}
+\subsection{Sorting map histograms in the self organising map.}\label{methodscluster}
 The self organizing map (SOM) methodology\cite{Kohonen1982} is a data driven technique that transforms a $n$ dimensional data source into a lower dimensional space, commonly a 2-dimensional map, while keeping the relative n-dimensional proximity of two datapoints intact. The distance in the lower dimensional representation is therefore a similarity index, calculated as the euclidian distance, of the higher dimensional space. Each point in the 2-dimensional map has location (x,y) and is associated with a vector of values from the n-dimensional space $(V_{x,y} = [v_{1},v_{2},...,v_{n}])$.
 
 SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration\cite{Koleheimen2004}. This methodology was chosen for its ability to create 2-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations\cite{Barreto2006}. 
 
-The 1.7 million maps histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM (written in Java 8\cite{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million datapoints from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locats nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM calculated with
+The 1.7 million maps histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM (written in Java 8\cite{Oracle2018}). After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million data points from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locates nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM, calculated with
 
 
 \begin{equation} 
 radiusDecay = radius * e^{-1 * iteration / timeConstant}
 \end{equation}
-where $radius$ is $100/2=50$, $iteration$ is the current training iteration, and $timeConstant$ is $totalIterations / \log _{10} (radius)$. Learn decay is calculated as
+where $radius$ is $100/2=50$, $iteration$ is the current training iteration (of a total iterations of 3.2 million), and $timeConstant$ is $totalIterations / \log _{10} (radius)$. Learn decay is calculated as
 \begin{equation} 
 learnDecay = learnRate * e^{-1 * iteration / timeConstant}
 \end{equation}
