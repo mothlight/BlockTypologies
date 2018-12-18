@@ -87,15 +87,15 @@ As cities grow and evolve, analysis of the basic structural elements of road net
 % our solution
 We propose a novel, quantitative, and objective method to discover city typologies on a neighbourhood scale of street patterns by evaluating city block size and regularity. This follows Louf \& Barthelemy's finding\cite{Louf2014a} that a systematic quantitative method to identify different neighbourhoods is currently lacking. 
 %% solution is globally applicabl | updates easily |  Robust | new city characteristics | can accomodate additonal data |
-Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1692 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A SOM is then used to sort these maps into distinct city block typologies (see Figure \ref{fig:somresults}). 
+Our method uses imagery from Google Maps of custom, abstract, and stylized maps of ~400x400m sections of the world's largest 1667 cities. Using a  computer vision floodfill technique, the size and regularity of city blocks in the map samples are calculated and histograms constructed for each. A SOM is then used to sort these maps into distinct city block typologies (see Figure \ref{fig:somresults}). 
 
 % Results
 %% Method is robust visible by global results
 %% intra inter city similarities
 %% Examples from Melbourne (and other cities)
-The methodology has evaluated 1.7 million maps from 1692 cities, showing the robustness of the methodology. The results of the SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
+The methodology has evaluated 1.7 million maps from 1667 cities, showing the robustness of the methodology. The results of the SOM, projecting the high dimensional space onto a 2-dimensional plane, is then used to colour code and highlight the map samples according to their SOM x,y coordinates. This process highlights similarities between city locations and has shown capable of detecting city archetypes such as city centres, suburban areas, and even more ephemeral entities such as the city edges (see Figure \ref{fig:mel23000}).
  
-This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar locations in all other cities. The global and heterogenous collection of 1692 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM (see Figure \ref{fig:world}).
+This method is not limited to detecting differences within a city, but is able to use a neighbourhood samples of one city and identify similar locations in all other cities. The global and heterogeneous collection of 1667 cities indicates the robustness of the methodology in classifying and identifying typologies in the respective map samples through the SOM (see Figure \ref{fig:world}).
 
 % Maybe we should add a map segment of melbourne CBD and which other areas in the world are similar.
 
@@ -117,7 +117,7 @@ Since this methodology promises to be applicable across many fields, the aim of 
 \begin{figure}
 \centering    
 \includegraphics[scale=0.10]{Images/SomImages_grid.png}  
-\caption{\bf  A visualisation of the 2-dimensional 100x100 SOM trained with 1.7 million map images from 1692 cities.  Each x,y point shows a representative image associated with each node while nodes without associated images are shown in black.}    
+\caption{\bf  A visualisation of the 2-dimensional 100x100 SOM trained with 1.7 million map images from 1667 cities.  Each x,y point shows a representative image associated with each node while nodes without associated images are shown in black.}    
  \label{fig:somresults}  
 \end{figure} 
 
@@ -132,7 +132,7 @@ Since this methodology promises to be applicable across many fields, the aim of 
 \begin{figure}
 \centering    
 \includegraphics[scale=0.20]{Images/Figure_3_World-01.jpg}  
-\caption{\bf  1692 world cities sampled with inserts showing detail of (left) San Francisco, (centre) Nairobi, and (right) Tokyo. City detail maps use the same SOM x,y location colour scheme as Figure \ref{fig:mel23000}.}    
+\caption{\bf  1667 world cities sampled with inserts showing detail of (left) San Francisco, (centre) Nairobi, and (right) Tokyo. City detail maps use the same SOM x,y location colour scheme as Figure \ref{fig:mel23000}.}    
  \label{fig:world}  
 \end{figure} 
 
@@ -196,7 +196,7 @@ It also allows us now to compare cities on a global scale and investigate furthe
 %\section{Methods}\label{sec:Methods}
 
 \subsection{Map imagery sampling.}\label{sec:methods2}
-The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1692 cities with populations $>$ 300,000 people\cite{UN2014} were selected for analysis. Map imagery from Google Maps\cite{GoogleStatic2017} was used to provide globally consistent data. 
+The concept employed in this study was to sample maps of individual city sections, calculate block size and regularity of each section, and then use a self organizing map (SOM) to organise the images into different urban types. 1667 cities with populations $>$ 300,000 people\cite{UN2014} were selected for analysis. Map imagery from Google Maps\cite{GoogleStatic2017} was used to provide globally consistent data. 
 
 A two-stage sampling approach was applied to each city. As no standardised urban boundaries are available for all the cities evaluated in this study, a methodology had to be developed to define these. Firstly, a sampling area extending 1.5 km from the identified city centroid\cite{UN2014} was set as a baseline. Then the sampling radius $r$ (km) was scaled, increasing by a power of 0.85 to the proportional increase in population size based on Barthelemy\cite{Barthelemy2016} in 
 
@@ -222,7 +222,7 @@ These procedures result in a population and water body-adjusted circular area ce
 
 320x320 pixel sized map images were sampled using a zoom level of 16 (covering 800x800m at the equator and 335x335m at higher latitudes) using a custom style defined with the Google Static Maps API\cite{GoogleStatic2017} (see Figure~\ref{fig:maps} for examples of Paris, France). To ensure each map covers the same area, each was cropped and resized before processing. The sampled city at the highest latitude was at 64 degrees north, so each image was cropped and resized to include a region of 335x335m. 
 
-The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1665. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
+The maps provide a high-level abstraction of road (black) and public transport (orange) networks, green space (green), and water bodies (blue). Any remaining space is coded white. Due to mapping inconsistencies in South Korea, all 25 South Korean cities were removed from the dataset, reducing the number of cities to 1667. 1000 maps were sampled per city. In addition, to enable in depth case studies, maps were sampled for Melbourne and Sydney, Australia at a 400m grid resolution across the greater metropolitan areas, resulting in an additional 23,027 locations for Melbourne and 24,596 for Sydney. The total dataset consists of 1,714,591 images.
 
 
 
@@ -248,7 +248,7 @@ Block size and regularity were calculated for each sampled image with the follow
  \While{Locate next white pixel by iterating across rows and columns}{
   Floodfill area using boundaries of all non-white colors (i.e. black roads, green space, blue water);\\
   Count pixel size of region;\\  
-  Construct a bounding box of the cloud of points in the region using Fast Convex Hull;\\
+  Construct a bounding box of the cloud of points in the region using the Fast Convex Hull algorithm\cite{Javagl2017,GoogleArchive2011};\\
   Count the pixels inside the bounding box;\\
   Use the difference between the bounding box size and the region size as measure of irregularity;\\
   Add size and regularity counts to list for the image;\\
