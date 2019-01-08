@@ -286,17 +286,16 @@ The self organizing map (SOM) methodology\cite{Kohonen1982} is a data driven tec
 
 SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration\cite{Koleheimen2004}. This methodology was chosen for its ability to create high-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations\cite{Barreto2006}. 
 
-The 1.7 million map histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM. After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million data points from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locates nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude ($learningDecay$) and  distance ($radiusDecay$) in the SOM, calculated with
-
+The 1.7 million map histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM. After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million data points from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locates nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude (learning decay, $D_{L}$) and distance (radius decay, $D_{R}$) in the SOM. Radius decay calculated in
 
 \begin{equation} 
-radiusDecay = r * e^{-1 * i / c}
+D_{R} = r  e^{-1  i / c}
 \end{equation}
-where radius $r$ is $100/2=50$, $i$ is the current training iteration (of a total iteration of $n$ = 3.2 million), and time constant $c$ is $n / \log _{10} (radius)$. Learn decay $d$ is calculated as
+where radius ($r$) is $100/2=50$, the current training iteration ($i$) (of total iterations ($n$) of 3.2 million), and time constant ($c$) is $n/ \log _{10} (r)$. Learning decay is calculated as
 \begin{equation} 
-d = r * e^{-1 * i / c}
+D_{L} = L_{r}  e^{-1  i / c}
 \end{equation}
-where learn rate $r$ = 0.05.
+where learn rate ($L_{r}$) = 0.05.
 
 After the SOM was trained, each map histogram was classified to find the closest matching node in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
 Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
