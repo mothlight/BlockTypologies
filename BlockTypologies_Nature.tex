@@ -290,13 +290,13 @@ The 1.7 million map histograms with 30 dimensions were the initial data space us
 
 
 \begin{equation} 
-radiusDecay = radius * e^{-1 * iteration / timeConstant}
+radiusDecay = r * e^{-1 * i / c}
 \end{equation}
-where $radius$ is $100/2=50$, $i$ is the current training iteration (of a total iteration of $n$ = 3.2 million), and $time constant c$ is $n$ / \log _{10} (radius)$. Learn decay $d$ is calculated as
+where radius $r$ is $100/2=50$, $i$ is the current training iteration (of a total iteration of $n$ = 3.2 million), and time constant $c$ is $n / \log _{10} (radius)$. Learn decay $d$ is calculated as
 \begin{equation} 
-learnDecay = learnRate * e^{-1 * iteration / timeConstant}
+d = r * e^{-1 * i / c}
 \end{equation}
-where $learn rate r = 0.05$.
+where learn rate $r$ = 0.05.
 
 After the SOM was trained, each map histogram was classified to find the closest matching node in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
 Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
