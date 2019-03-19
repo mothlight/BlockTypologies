@@ -66,16 +66,16 @@ cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Ci
 cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Nairobi, Kenya_kde.png" Images/CaseStudy/NairobiKenyakde.png
 cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/compare.png" Images/CaseStudy
 
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_New York-Newark, United States of America.png" Images/CaseStudy/MapsNewYorkNewarkUnitedStatesofAmerica.png
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Tokyo, Japan.png" Images/CaseStudy/MapsTokyoJapan.png
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Paris, France.png" Images/CaseStudy/MapsParisFrance.png
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Jakarta, Indonesia.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Beijing, China.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Barcelona, Spain.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Sydney, Australia.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Melbourne, Australia.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Bras¡lia, Brazil.png" Images/CaseStudy
-cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Nairobi, Kenya.png" Images/CaseStudy
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_New York-Newark, United States of America.png" Images/CaseStudy/MapsNewYorkNewarkUnitedStatesofAmerica_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Tokyo, Japan.png" Images/CaseStudy/MapsTokyoJapan_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Paris, France.png" Images/CaseStudy/MapsParisFrance_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Jakarta, Indonesia.png" Images/CaseStudy/MapsJakartaIndonesia_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Beijing, China.png" Images/CaseStudy/MapsBeijingChina_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Barcelona, Spain.png" Images/CaseStudy/MapsBarcelonaSpain_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Sydney, Australia.png" Images/CaseStudy/MapsSydneyAustralia_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Melbourne, Australia.png" Images/CaseStudy/MapsMelbourneAustralia_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Bras¡lia, Brazil.png" Images/CaseStudy/MapsBrasiliaBrazil_2.png
+cp -u "/home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/CityImages/Case Study/Maps_Nairobi, Kenya.png" Images/CaseStudy/MapsNairobiKenya_2.png
 
 
 
