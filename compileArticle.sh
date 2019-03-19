@@ -24,6 +24,38 @@ cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/city1667_82612_28.
 #cp -u /home/kerryn/git/2018-09-ParisEndRewrite/Data/Floodfill/Histograms6/CityClusters_15VarBins_Size_135USCitiesImages_10clusters.png Images/CityClusters15VarBinsSize135USCitiesImages10clusters.png
 
 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/SomImages_colorBorder_1800KImg3200KItr_2.png Images/SomImages_grid.png
+
+
+
+
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/2_47.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/5_49.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/25_38.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/31_70.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/31_76.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/31_80.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/32_47.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/36_10.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/52_97.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/CityMaps2/82_98.png Images/Histograms
+
+
+
+
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_2_47.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_5_49.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_25_38.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_31_70.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_31_76.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_31_80.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_32_47.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_36_10.png Images/Histograms 
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_52_97.png Images/Histograms
+cp -u /home/kerryn/git/2019-02-BlockTypologyData/data/output/SomOutput/Plots/Histograms/Hist_82_98.png Images/Histograms 
+
+
+
 
 
 
