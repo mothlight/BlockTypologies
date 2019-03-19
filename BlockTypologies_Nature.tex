@@ -121,6 +121,74 @@ Since this methodology promises to be fundamental and applicable across many fie
  \label{fig:somresults}  
 \end{figure} 
 
+
+
+
+
+
+
+\begin{figure}
+\centering    
+a)\includegraphics[scale=0.15]{Images/CaseStudy/NewYork-NewarkUnitedStatesofAmerica.png}   
+b)\includegraphics[scale=0.15]{Images/CaseStudy/TokyoJapankde.png}   
+c)\includegraphics[scale=0.15]{Images/CaseStudy/ParisFrancekde.png}  
+d)\includegraphics[scale=0.15]{Images/CaseStudy/JakartaIndonesiakde.png}  
+e)\includegraphics[scale=0.15]{Images/CaseStudy/BeijingChinakde.png}  
+f)\includegraphics[scale=0.15]{Images/CaseStudy/BarcelonaSpainkde.png}  
+g)\includegraphics[scale=0.15]{Images/CaseStudy/SydneyAustraliakde.png}  
+h)\includegraphics[scale=0.15]{Images/CaseStudy/MelbourneAustraliakde.png}  
+i)\includegraphics[scale=0.15]{Images/CaseStudy/BrasiliaBrazilkde.png}  
+j)\includegraphics[scale=0.15]{Images/CaseStudy/NairobiKenyakde.png}   
+k)\includegraphics[scale=0.15]{Images/CaseStudy/compare.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
+%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}    
+  
+  
+\caption{\bf Kernel density maps of SOM x,y locations for cities a) New York, b) Tokyo, c) Paris, d) Jakarta, e) Beijing, f) Barcelona, g) Sydney, h) Melbourne, i) Bras\'{i}lia, j) Nairobi, and all 10 cities on a single plot.  }    
+ \label{fig:kernel}  
+\end{figure} 
+
+
+% trim={<left> <lower> <right> <upper>}
+% [trim={5cm 0 0 0},clip]
+
+
+\begin{figure}
+\centering    
+a)\includegraphics[trim={0 3201px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsNewYorkNewarkUnitedStatesofAmerica.png}   
+b)\includegraphics[trim={0 9601px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsTokyoJapan.png}   
+c)\includegraphics[trim={0 2561px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsParisFrance.png}  
+d)\includegraphics[trim={0 5761px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsJakartaIndonesia.png}  
+e)\includegraphics[trim={0 8641px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsBeijingChina.png}  
+f)\includegraphics[trim={0 3201px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsBarcelonaSpain.png}  
+g)\includegraphics[trim={0 4801px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsSydneyAustralia.png}  
+h)\includegraphics[trim={0 5761px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsMelbourneAustralia.png} 
+i)\includegraphics[trim={0 2881px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsBrasiliaBrazil.png}  
+j)\includegraphics[trim={0 10241px 0 0},clip,scale=0.15]{Images/CaseStudy/MapsNairobiKenya.png}   
+
+  
+  
+\caption{\bf Maps for top SOM x,y locations for cities a) New York, b) Tokyo, c) Paris, d) Jakarta, e) Beijing, f) Barcelona, g) Sydney, h) Melbourne, i) Bras\'{i}lia, and j) Nairobi.  }    
+ \label{fig:kernel}  
+\end{figure} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{figure}
 \centering    
 \includegraphics[scale=0.70,page=1]{Images/Melbourne_5_Final.pdf}  
@@ -235,9 +303,9 @@ The maps provide a high-level abstraction of road (black) and public transport (
 \end{figure} 
 
 
-\subsection{Calculating block size and regularity.}\label{methodscalc}
+\subsection{Calculating block size, regularity, and colour counts.}\label{methodscalc}
 
-Block size and regularity were calculated for each sampled image with the following algorithm, using the Java 8 AWT toolkit\cite{Oracle2018}:
+Block size, regularity, and colour counts were calculated for each sampled image with the following algorithm, using the Java 8 AWT toolkit\cite{Oracle2018}:
 
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -255,7 +323,8 @@ Block size and regularity were calculated for each sampled image with the follow
   Add size and regularity counts to list for the image;\\
  }
  Sort each list of size and regularity into 15 fixed histogram bins;\\
- Combine the two histograms into a single histogram vector to be used in the SOM;\\
+ Count percentage of blue, orange, green, black, and white pixels in each image.\\
+ Combine the two size and regularity histograms along with pixel counts into a single histogram vector to be used in the SOM;\\
  \caption{Calculation of histograms of block sizes and regularity}
 \end{algorithm}
 
@@ -276,12 +345,11 @@ Samples of size floodfills and regularity floodfills are shown in Figure \ref{fi
 
 Using the calculated counts, two vectors were constructed for each image, one each for block size and block regularity. The vectors were sorted into 15 histogram bins (the number of bins determined by Sturges' formula\cite{Sturges1926}). To reduce the clumping of data in the first bin, variable bins were used to spread this data across all bins. The first bin starts with a size boundary of 1 and each following bin has a boundary of the current bin boundary times a multiplier. A multiplier of 2.3 was used to fit the maximum count size (320x320 pixels = 102400) into the 15 bins.
 
-The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity frequencies (on the right) into a single histogram vector.
+The resulting histograms for sample map regions are shown in Figure \ref{fig:mapsandHist}. Histograms input into the SOM were constructed by combining the 15 bins of region size frequencies (on the left side) with the 15 bins of region regularity frequencies (on the right) into a single histogram vector. In addition, colour pixel percentages are appended to the end of the histogram vector.
 
-Images/Histograms
 
 \begin{figure}
-    \centering    
+\centering    
   \includegraphics[scale=0.13]{Images/Histograms/2_47.png}   
   \includegraphics[scale=0.13]{Images/Histograms/5_49.png}   
   \includegraphics[scale=0.13]{Images/Histograms/25_38.png}   
@@ -292,17 +360,17 @@ Images/Histograms
   \includegraphics[scale=0.13]{Images/Histograms/36_10.png}   
   \includegraphics[scale=0.13]{Images/Histograms/52_97.png}   
   \includegraphics[scale=0.13]{Images/Histograms/82_98.png}   
-
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_2_47.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_5_49.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_25_38.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_31_70.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_31_76.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_31_80.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_32_47.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_36_10.png}    
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_52_97.png}   
-  \includegraphics[scale=0.023]{Images/Histograms/Hist_82_98.png}   
+\\
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_2_47.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_5_49.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_25_38.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_31_70.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_31_76.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_31_80.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_32_47.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_36_10.png}    
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_52_97.png}   
+  \includegraphics[scale=0.0235]{Images/Histograms/Hist_82_98.png}   
 \caption{\bf Samples of map regions (top) and resulting histograms (bottom). Region size, regularity, and colour counts are joined into a combined histogram vector, with size frequencies on the left side of the graph, regularity on the centre right and colour pixel counts to the far right.}    
  \label{fig:mapsandHist}  
 \end{figure} 
@@ -326,18 +394,16 @@ where learn rate ($L_{r}$) = 0.05.
 After the SOM was trained, each map histogram was classified to find the closest matching node in the SOM. The underlying imagery of the resulting trained SOM was visualised by tiling representative map images from each node x,y point in the SOM in Figure \ref{fig:somresults}. Areas with black have no associated map segments with that particular node x,y location. Most nodes are associated with multiple map segments that have similar characteristics, %(ref{fig:SOM_density.)
 Two notable outliers exist that accumulate more than 10,000 map segments (0:21) with 50104 and (6:72) 10723. Both contain map segments that are either only white (0:21) or contain no white (6:72).
 
-
-
-
-
 The node's x,y locations were encoded into RGB colour codes using a Java 8 port of Color2D\cite{Jackle2017,Steiger2015}. These colours were used in plotting the x,y typologies in qGIS\cite{QGIS2009}.
 
 
+\subsection{KernelDensityEstimator2D.}\label{kerneldensity}
 
+Kernel density plots were made of the SOM x,y locations for each city using the KernelDensityEstimator2D (a bi-variate kernel density smoother for data) module from the Bayesian Evolutionary Analysis by Sampling Trees (BEAST) software package \cite{Suchard2018}.
 
+% KernelDensityEstimator2D kde = new KernelDensityEstimator2D(dataXa, dataYa, null, 100, null); // 100 is smoothed grid size
 
-
-
+TODO more detail about this
 
 
 \end{methods}
