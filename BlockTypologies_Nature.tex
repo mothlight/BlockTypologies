@@ -116,7 +116,7 @@ Since this methodology promises to be fundamental and applicable across many fie
 
 \begin{figure}
 \centering    
-\includegraphics[scale=0.25]{Images/SomImages_grid.png}  
+\includegraphics[scale=0.04]{Images/SomImages_grid.png}  
 \caption{\bf  A visualisation of the 2-dimensional 100x100 SOM trained with 1.7 million map images from 1667 cities.  Each x,y point shows a representative image associated with each node while nodes without associated images are shown in black. Border shows colour coding scheme for SOM x,y locations used in following figures. }    
  \label{fig:somresults}  
 \end{figure} 
@@ -139,16 +139,10 @@ g)\includegraphics[scale=0.15]{Images/CaseStudy/SydneyAustraliakde.png}
 h)\includegraphics[scale=0.15]{Images/CaseStudy/MelbourneAustraliakde.png}  
 i)\includegraphics[scale=0.15]{Images/CaseStudy/BrasiliaBrazilkde.png}  
 j)\includegraphics[scale=0.15]{Images/CaseStudy/NairobiKenyakde.png}   
-k)\includegraphics[scale=0.15]{Images/CaseStudy/compare.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}  
-%\includegraphics[scale=0.13]{Images/CaseStudy/XXX.png}    
+   
   
   
-\caption{\bf Kernel density maps of SOM x,y locations for cities a) New York, b) Tokyo, c) Paris, d) Jakarta, e) Beijing, f) Barcelona, g) Sydney, h) Melbourne, i) Bras\'{i}lia, j) Nairobi, and all 10 cities on a single plot.  }    
+\caption{\bf Kernel density maps of SOM x,y locations for cities a) New York, b) Tokyo, c) Paris, d) Jakarta, e) Beijing, f) Barcelona, g) Sydney, h) Melbourne, i) Bras\'{i}lia, and j) Nairobi.  }    
  \label{fig:kernel}  
 \end{figure} 
 
@@ -380,7 +374,11 @@ The self organizing map (SOM) methodology\cite{Kohonen1982} is a data driven tec
 
 SOM is a generic, objective and robust methodology that has been deployed in many domains and is used for the visualization of n-dimensional data and data exploration\cite{Koleheimen2004}. This methodology was chosen for its ability to create high-dimensional maps of smoothly changing patterns from the original high dimensional space. Additionally the SOM map spans the extremes observed in the original data and allows for investigation on how the data is distributed, potential paths between two observations or function approximation with non-linear relations\cite{Barreto2006}. 
 
-The 1.7 million map histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM. After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million data points from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locates nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. This training is subjugated to a decay function for both magnitude (learning decay, $D_{L}$) and distance (radius decay, $D_{R}$) in the SOM. Radius decay calculated in
+The 1.7 million map histograms with 30 dimensions were the initial data space used to train the 2-dimensional SOM. After the randomised initialisation of the 100x100 nodes of the SOM, a random selection of 3.2 million data points from the initial data space were used to transform the 2-dimensional SOM to match it. This iterative process locates nodes that are similar to the training vector and morphs the values of the SOM nodes towards the training values. The number of iterations were determined by the minimum number of iterations to reach the greatest continuity among clusters. Training was discontinued when the clusters started becoming discontinuous.
+
+TODO, update 3.2 million iterations with the value used.
+
+This training is subjugated to a decay function for both magnitude (learning decay, $D_{L}$) and distance (radius decay, $D_{R}$) in the SOM. Radius decay calculated in
 
 \begin{equation} 
 D_{R} = r  e^{-1  i / c}
